@@ -28,3 +28,11 @@ Files starting with BM are BMP files
 check for corrupted images/ find out if there are hidden bytes:
 identify -verbose [image]
 imganalyzer --image [image] -t jpg --height 3000 --width 3000
+
+https://georgeom.net/StegOnline/upload
+
+Stegonline: extract bytes from colors
+Ex: extract red/green/blue bit 1 from an image
+bit 0 or 1 are the least noticeable
+
+https://gtfobins.github.io/
