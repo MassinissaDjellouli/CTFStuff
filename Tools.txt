@@ -36,3 +36,5 @@ Ex: extract red/green/blue bit 1 from an image
 bit 0 or 1 are the least noticeable
 
 https://gtfobins.github.io/
+
+https://github.com/Rajchowdhury420/CTF-CheatSheet
