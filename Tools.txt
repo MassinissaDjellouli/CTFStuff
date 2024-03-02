@@ -2,8 +2,6 @@ Find files hidden in images or more:
 binwalk
 add --dd='.*' to extract
 
-
-
 Get Metadata:
 exiftool for images
 pdfinfo for pdfs
@@ -14,7 +12,6 @@ strings
 
 nslookup: check open ports
 ps: processes
-
 
 
 Select &**
@@ -38,3 +35,52 @@ bit 0 or 1 are the least noticeable
 https://gtfobins.github.io/
 
 https://github.com/Rajchowdhury420/CTF-CheatSheet
+
+https://www.dei.isep.ipp.pt/~nsilva/ensino/ArqC/ArqC1998-1999/nguide/ng-j.htm
+ASM x86_64 jump instruction
+
+    JA - Jump If Above
+    JAE - Jump If Above or Equal
+    JB - Jump If Below
+    JBE - Jump If Below or Equal
+    JC - Jump If Carry
+    JCXZ - Jump If CX Register Zero
+    JE - Jump If Equal
+    JG - Jump If Greater
+    JGE - Jump If Greater or Equal
+    JL - Jump If Less
+    JLE - Jump If Less or Equal
+    JMP - Jump Unconditionally
+    JNA - Jump If Not Above
+    JNAE - Jump If Not Above or Equal
+    JNB - Jump If Not Below
+    JNBE - Jump If Not Below or Equal
+
+	
+
+    JNC - Jump If No Carry
+    JNE - Jump If Not Equal
+    JNG - Jump If Not Greater
+    JNGE - Jump If Not Greater or Equal
+    JNL - Jump If Not Less
+    JNLE - Jump If Not Less or Equal
+    JNO - Jump If No Overflow
+    JNP - Jump If No Parity
+    JNS - Jump If No Sign
+    JNZ - Jump If Not Zero
+    JO - Jump If Overflow
+    JP - Jump If Parity
+    JPE - Jump If Parity Even
+    JPO - Jump If Parity Odd
+    JS - Jump If Sign
+    JZ - Jump If Zero
+
+
+LEA asm instruction => Load Effective Address
+
+
+
+& => AND
+| => OR
+^ => XOR
+~ => NOT
