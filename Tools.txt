@@ -84,3 +84,10 @@ LEA asm instruction => Load Effective Address
 | => OR
 ^ => XOR
 ~ => NOT
+
+Reverse:
+
+    If no idea what to find:
+
+    Check IDA -> Graph view for each functions
+    It is possible to draw an image using the graph view
