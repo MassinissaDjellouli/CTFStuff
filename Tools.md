@@ -1,31 +1,36 @@
-### Find files hidden in images or more:
-binwalk
-add --dd='.*' to extract
+Password bruteforce cracking from a hash: Hashcat
 
-### Get Metadata:
-exiftool for images
-pdfinfo for pdfs
-strings for text files
-
-### Get strings from binary files:
-strings
-
-nslookup: check open ports
-ps: processes
-
-### SQL Injection
+## SQL Injection
 Select &**
 From 
 Where 
 UNION
 
-### STEG
+## STEG
+
+#### Find files hidden in images or more:
+binwalk
+add `--dd='.*'` or `-Me` to extract
+
+#### Get Metadata:
+exiftool for images
+pdfinfo for pdfs
+strings for text files
+
+#### Get strings from binary files:
+strings
+
+nslookup: check open ports
+ps: processes
+
 When checking hex, check the begining and the end of the file. Can have some info about the file type.
 Files starting with BM are BMP files
 
 check for corrupted images/ find out if there are hidden bytes:
-identify -verbose [image]
-imganalyzer --image [image] -t jpg --height 3000 --width 3000
+
+`identify -verbose [image]`
+
+`imganalyzer --image [image] -t jpg --height 3000 --width 3000`
 
 https://georgeom.net/StegOnline/upload
 
@@ -33,15 +38,17 @@ Stegonline: extract bytes from colors
 Ex: extract red/green/blue bit 1 from an image
 bit 0 or 1 are the least noticeable
 
-### Unix bins that can bypass security stuff
+## Unix bins that can bypass security stuff
 https://gtfobins.github.io/
 
-### Cheatsheets
-https://github.com/Rajchowdhury420/CTF-CheatSheet
+## Cheatsheets
+- https://github.com/Rajchowdhury420/CTF-CheatSheet
+- https://github.com/payloadbox/sql-injection-payload-list 
 
-### ASM
+## ASM
 https://www.dei.isep.ipp.pt/~nsilva/ensino/ArqC/ArqC1998-1999/nguide/ng-j.htm
-ASM x86_64 jump instruction
+
+#### ASM x86_64 jump instructions
 
     JA - Jump If Above
     JAE - Jump If Above or Equal
@@ -59,9 +66,6 @@ ASM x86_64 jump instruction
     JNAE - Jump If Not Above or Equal
     JNB - Jump If Not Below
     JNBE - Jump If Not Below or Equal
-
-	
-
     JNC - Jump If No Carry
     JNE - Jump If Not Equal
     JNG - Jump If Not Greater
@@ -95,10 +99,8 @@ https://stackoverflow.com/questions/43933379/what-do-the-e-and-r-prefixes-stand-
 |         |   EAX   |   AX   |       |
 |   RAX   |         |        |       |
 
-Password bruteforce cracking from a hash:
-    Hashcat
 
-ASM x86_64 syscalls 
+#### ASM x86_64 syscalls 
 https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md
 ASM x86_64 directives
 https://docs.oracle.com/cd/E26502_01/html/E28388/eoiyg.html
@@ -111,7 +113,8 @@ strace: Useful to see the syscalls that a program does.
 
 #### Use python lib pwn to do asm syscalls:
 
-    ex:
+ex:
+```py
     p = process("path/to/process")
     context.arch = "amd64"
 
@@ -120,6 +123,7 @@ strace: Useful to see the syscalls that a program does.
     """)
     p.sendlineafter("printed text",code)
     p.interactive()
+```
 
 ##### asm code ex:
 ![Alt text](image.png)
@@ -127,6 +131,7 @@ strace: Useful to see the syscalls that a program does.
 rsp == stack pointer
 
 Use pwn to do syscalls:
+```py
         p = process("path/to/process")
         context.arch = "amd64"
         code = ""
@@ -135,11 +140,10 @@ Use pwn to do syscalls:
         code += shellcraft.amd.linux.$2(arg0,...,argN)
         code += shellcraft.amd.linux.$3(arg0,...,argN)
         p.sendlineafter("printed text",asm(code))
-
-
+```
         where $N <-- syscall name(ex: open, read, write)
 
-### Reverse:
+## Reverse:
 
     If no idea what to find:
 
