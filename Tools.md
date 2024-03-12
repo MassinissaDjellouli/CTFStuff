@@ -41,6 +41,10 @@ bit 0 or 1 are the least noticeable
 ## Unix bins that can bypass security stuff
 https://gtfobins.github.io/
 
+checksec:
+Shows the security information on a file.
+useful for pwn challenges 
+
 ## Cheatsheets
 - https://github.com/Rajchowdhury420/CTF-CheatSheet
 - https://github.com/payloadbox/sql-injection-payload-list 
