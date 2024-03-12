@@ -87,6 +87,11 @@ https://www.dei.isep.ipp.pt/~nsilva/ensino/ArqC/ArqC1998-1999/nguide/ng-j.htm
     JS - Jump If Sign
     JZ - Jump If Zero
 
+x86_64 Word length:
+
+    word == 16 bits
+    dword == double word == 32 bits
+    qword == quad word == 64 bits
 
 LEA asm instruction => Load Effective Address
 
