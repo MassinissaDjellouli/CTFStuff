@@ -6,6 +6,10 @@ From
 Where 
 UNION
 
+## Hashcat
+hashcat -a 0(brute force) -m [n] (n = hash type) file.hash rockyou.txt
+hashcat -a 0(brute force) -m [n] (n = hash type) file.hash rockyou.txt -r oneruletorulethemall.rule
+
 ## STEG
 
 #### Find files hidden in images or more:
