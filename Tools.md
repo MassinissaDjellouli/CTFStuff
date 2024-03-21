@@ -162,3 +162,7 @@ Use pwn to do syscalls:
 
     Check IDA -> Graph view for each functions
     It is possible to draw an image using the graph view
+
+## Java
+
+    javap.exe to get info on java
