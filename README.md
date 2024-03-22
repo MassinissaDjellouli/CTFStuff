@@ -10,6 +10,21 @@ UNION
 hashcat -a 0(brute force) -m [n] (n = hash type) file.hash rockyou.txt
 hashcat -a 0(brute force) -m [n] (n = hash type) file.hash rockyou.txt -r oneruletorulethemall.rule
 
+## RSA
+
+https://github.com/RsaCtfTool/RsaCtfTool
+
+    ./RsaCtfTool.py --decrypt CIPHERTEXT -n N -e E
+
+```python
+from Crypto.Util.number import inverse
+from Crypto.PublicKey import RSA
+
+key = RSA.importKey(asciikey)
+n = int(key.n)
+e = int(key.e)
+```
+
 ## STEG
 
 #### Find files hidden in images or more:
@@ -166,3 +181,4 @@ Use pwn to do syscalls:
 ## Java
 
     javap.exe to get info on java
+
