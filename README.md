@@ -10,8 +10,8 @@ Select &** From [Table] Where 1 = 1 UNION ...
 
 Password bruteforce cracking from a hash: Hashcat
 
-hashcat -a 0(brute force) -m [n] (n = hash type) file.hash rockyou.txt
-hashcat -a 0(brute force) -m [n] (n = hash type) file.hash rockyou.txt -r oneruletorulethemall.rule
+    hashcat -a 0(brute force) -m [n] (n = hash type) file.hash rockyou.txt
+    hashcat -a 0(brute force) -m [n] (n = hash type) file.hash rockyou.txt -r oneruletorulethemall.rule
 
 ## RSA
 
