@@ -1,12 +1,15 @@
-Password bruteforce cracking from a hash: Hashcat
+
 
 ## SQL Injection
-Select &**
-From 
-Where 
-UNION
+
+```sql
+Select &** From [Table] Where 1 = 1 UNION ...
+```
 
 ## Hashcat
+
+Password bruteforce cracking from a hash: Hashcat
+
 hashcat -a 0(brute force) -m [n] (n = hash type) file.hash rockyou.txt
 hashcat -a 0(brute force) -m [n] (n = hash type) file.hash rockyou.txt -r oneruletorulethemall.rule
 
@@ -177,6 +180,40 @@ Use pwn to do syscalls:
 
     Check IDA -> Graph view for each functions
     It is possible to draw an image using the graph view
+## Linux
+
+Move from ssh to main computer:
+```bash
+scp -P [PORT] user@host:path /mnt/c/Users/...
+```
+
+```bash
+sudo -l #list actions that you can do
+sudo -u [user] #impersonate user
+```
+
+If you are allowed to do a command on a path ending with /*, you can execute it anywhere
+    
+#### ex:
+    
+    User x may run the following commands on host_machine:
+    /bin/cat /x/public/* 
+                       
+    this means you can do something like: cat /x/public/../../user2/flag.txt
+### SUID exploits
+
+If file permission has: -##s###### (s instead of x for root permission) -> <strong>SUID</strong>
+
+#### 1. Change PATH variable
+##### Example:
+```bash
+ls flag.txt
+```
+##### Exploit by:
+```bash
+cp /bin/cat /tmp/ls #if there are arguments after the ls, try using nano instead
+export PATH=/tmp 
+```
 
 ## Java
 
