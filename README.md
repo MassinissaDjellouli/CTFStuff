@@ -6,6 +6,22 @@
 Select &** From [Table] Where 1 = 1 UNION ...
 ```
 
+## Web
+
+- Inspect HTML
+- Inspect JS
+- Inspect Debug tab
+- Inspect CSS
+- Search for /robots.txt
+- If the server is apache, try /.htaccess
+- If MacOS: try /.DS_Store
+
+### StoredXSS
+
+To try to intercept requests from the page:
+
+    https://requestbin.myworkato.com/
+
 ## Hashcat
 
 Password bruteforce cracking from a hash: Hashcat
@@ -29,6 +45,16 @@ e = int(key.e)
 ```
 
 ## STEG
+
+#### Find hidden msgs in homoglyphs:
+
+    https://holloway.nz/steg/
+
+#### Hidden msgs in plain text:
+
+- Check first word of lines
+- Check first letter of line
+- Check whitespaces (https://www.dcode.fr/langage-whitespace)
 
 #### Find files hidden in images or more:
 binwalk
