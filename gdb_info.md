@@ -1,4 +1,4 @@
-proc infoproc mapping:
+info proc mappings:
 
     Permet de voir la memory de notre programme
 
