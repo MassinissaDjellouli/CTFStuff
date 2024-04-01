@@ -30,3 +30,7 @@ d breakpoints
 r < {filepath} 
 
     permet de run en passant un file d'input
+
+run < <(printf '[ToInject]')
+
+    permet de run en injectant un input dans stdin 

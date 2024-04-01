@@ -10,3 +10,8 @@ if (var == '\0'){
 }
 ```
 Could be comparing VarA with VarB to see if they match
+
+
+When reading python bytecode:
+
+- Check the order arguments are passed in

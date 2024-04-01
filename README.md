@@ -16,6 +16,10 @@ Select &** From [Table] Where 1 = 1 UNION ...
 - If the server is apache, try /.htaccess
 - If MacOS: try /.DS_Store
 
+When prompted for a password:
+
+- Try switching request to put or post
+
 ### StoredXSS
 
 To try to intercept requests from the page:
@@ -85,6 +89,25 @@ https://georgeom.net/StegOnline/upload
 Stegonline: extract bytes from colors
 Ex: extract red/green/blue bit 1 from an image
 bit 0 or 1 are the least noticeable
+
+## PWN
+
+### C vulnerabilities:
+
+    gets() <-- Reads until newline, can pass in null bytes and its gonna read them
+
+### Heap overflow
+
+    Look for malloc functions
+    To overflow: Number of bytes in malloc + 16 (for 64bit otherwise + 8)
+    
+    ex: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\x00cat .passwd #
+        
+        First 48 chars are gonna be in buffer A, the rest is gonna be in buffer B
+        
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\x00 <- [Buffer A] cat .passwd # <- [Buffer B]
+
+    If need to inject null byte: printf '\x00' 
 
 ## Unix bins that can bypass security stuff
 https://gtfobins.github.io/
@@ -163,10 +186,6 @@ ASM x86_64 directives
 https://docs.oracle.com/cd/E26502_01/html/E28388/eoiyg.html
 strace: Useful to see the syscalls that a program does.
 
-#### File descriptors:
-    STDIN = 0
-    STDOUT = 1
-    STDERR = 2
 
 #### Use python lib pwn to do asm syscalls:
 
@@ -206,6 +225,8 @@ Use pwn to do syscalls:
 
     Check IDA -> Graph view for each functions
     It is possible to draw an image using the graph view
+
+
 ## Linux
 
 Move from ssh to main computer:
@@ -226,6 +247,7 @@ If you are allowed to do a command on a path ending with /*, you can execute it 
     /bin/cat /x/public/* 
                        
     this means you can do something like: cat /x/public/../../user2/flag.txt
+
 ### SUID exploits
 
 If file permission has: -##s###### (s instead of x for root permission) -> <strong>SUID</strong>
@@ -241,7 +263,32 @@ cp /bin/cat /tmp/ls #if there are arguments after the ls, try using nano instead
 export PATH=/tmp 
 ```
 
+#### File descriptors:
+    STDIN = 0
+    STDOUT = 1
+    STDERR = 2
+
+
 ## Java
 
     javap.exe to get info on java
 
+## Sleuth
+
+Useful to do forensics on .img/.iso files
+
+#### If we get "Cannot determine file system type"
+We need to pass in an offset -> add `-o [offset]` to the command
+
+To get offsets on the image:
+`mmls [img]`
+Example result: ![Alt text](image-1.png)
+
+To get info on an image:
+`fsstat [img]` 
+
+To find a file in the image:
+`fls -r [img] | grep [filename]` <-- will give the inode of the file
+
+To read the content of the file:
+`icat [img] [inode]`
