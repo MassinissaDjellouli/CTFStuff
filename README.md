@@ -3,8 +3,11 @@
 ## SQL Injection
 
 ```sql
-Select &** From [Table] Where 1 = 1 UNION ...
+' OR 1 = 1 UNION SELECT 1
 ```
+If error:
+- Try adding a limit to the amount of Rows
+- Try adding more columns
 
 ## Web
 
