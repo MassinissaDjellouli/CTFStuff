@@ -37,6 +37,10 @@ To try to intercept requests from the page:
     https://requestbin.myworkato.com/
 
     Can add link to img src, or change window.location to this and add "?flag=" + document.cookie
+
+### JWT
+
+https://jwt.io/
 ## Hashcat
 
 Password bruteforce cracking from a hash: Hashcat
