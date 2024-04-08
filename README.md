@@ -18,6 +18,7 @@ If error:
 - Search for /robots.txt
 - If the server is apache, try /.htaccess
 - If MacOS: try /.DS_Store
+- Check /etc/apache2/sites-enabled/000-default or /etc/apache2/sites-available/default
 
 When prompted for a password:
 
