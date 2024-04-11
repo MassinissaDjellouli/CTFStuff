@@ -337,3 +337,7 @@ To read the content of the file:
 #### Flutter RE
 
 https://github.com/Impact-I/reFlutter
+
+## Databases
+
+MSSQL Management Studio allows you to do a vulnerability assessement on a db.
