@@ -1,5 +1,4 @@
-
-
+## [Interesting Vulnerabilities](VulnList.md)
 ## SQL Injection
 
 ```sql
@@ -18,7 +17,6 @@ If error:
 - Search for /robots.txt
 - If the server is apache, try /.htaccess
 - If MacOS: try /.DS_Store
-- Check /etc/apache2/sites-enabled/000-default or /etc/apache2/sites-available/default
 
 When prompted for a password:
 
@@ -30,21 +28,58 @@ When prompted for a password:
  //instead of
  console.log("test")
  ```
+### API
+- Check OPTIONS verb
+- Try every verb
+- Try passing more fields in an "update" endpoint
 
+ex: If the user object is this: 
+```json
+{
+    "username":"username",
+    "status":"user"
+}
+```
+and the update endpoint asks for this:
+```json
+{
+    "username":"username"
+}
+```
+Pass this:
+```json
+{
+    "username":"username",
+    "status":"admin"
+}
+```
+
+### Path Traversal
+
+Useful to check:
+- admin.php
+- login.php
+- Add ~ at the end of the php files
+    - Vim backup files are stored with the file name + ~
+- /etc/apache2/sites-enabled/000-default or /etc/apache2/sites-available/default
 ### Different Angular XSS payloads
-    https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/XSS%20Injection/XSS%20in%20Angular.md
+https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/XSS%20Injection/XSS%20in%20Angular.md
     
 ### StoredXSS
 
 To try to intercept requests from the page:
 
-    https://requestbin.myworkato.com/
+https://requestbin.myworkato.com/
 
-    Can add link to img src, or change window.location to this and add "?flag=" + document.cookie
+Can add link to img src, or change window.location to this and add "?flag=" + document.cookie
 
 ### JWT
 
 https://jwt.io/
+
+```bash
+crackjwt.sh [jwtToken]
+```
 ## Hashcat
 
 Password bruteforce cracking from a hash: Hashcat
@@ -56,7 +91,7 @@ Password bruteforce cracking from a hash: Hashcat
 
 https://github.com/RsaCtfTool/RsaCtfTool
 
-    ./RsaCtfTool.py --decrypt CIPHERTEXT -n N -e E
+    RsaCtfTool.py --decrypt CIPHERTEXT -n N -e E
 
 ```python
 from Crypto.Util.number import inverse
@@ -68,6 +103,9 @@ e = int(key.e)
 ```
 
 ## STEG
+#### Braille translator:
+
+https://www.branah.com/braille-translator
 
 #### Find hidden msgs in homoglyphs:
 
@@ -208,8 +246,11 @@ https://stackoverflow.com/questions/43933379/what-do-the-e-and-r-prefixes-stand-
 
 #### ASM x86_64 syscalls 
 https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md
-ASM x86_64 directives
+
+ASM x86_64 directives:
+
 https://docs.oracle.com/cd/E26502_01/html/E28388/eoiyg.html
+
 strace: Useful to see the syscalls that a program does.
 
 

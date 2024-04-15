@@ -5,4 +5,3 @@ grep -qxF "$export" ~/.bashrc || echo "$export" >> ~/.bashrc
 
 aliases='alias java="java.exe";alias ctf="cd /mnt/c/Users/massi/Desktop/CTFStuff"'
 grep -qxF "$aliases" ~/.bashrc || echo "$aliases" >> ~/.bashrc
-
