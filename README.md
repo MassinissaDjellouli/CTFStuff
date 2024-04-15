@@ -75,10 +75,25 @@ Can add link to img src, or change window.location to this and add "?flag=" + do
 
 ### JWT
 
-https://jwt.io/
-
+- https://jwt.io/
+- https://github.com/lmammino/jwt-cracker
+  - Needed for `crackjwt.sh`
 ```bash
 crackjwt.sh [jwtToken]
+```
+
+
+### Flask session token:
+- https://github.com/Paradoxis/Flask-Unsign
+  - Needed for `crack_flask_token.sh` and `edit_flask_token.sh`
+- https://www.kirsle.net/wizards/flask-session.cgi
+
+```bash
+crack_flask_token.sh [token]
+```
+
+```bash
+edit_flask_token.sh [payload] [secret]
 ```
 ## Hashcat
 
