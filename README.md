@@ -1,3 +1,8 @@
+#### Annoying crap to use bash scripts:
+```bash
+dos2unix $(ls /mnt/c/Users/massi/Desktop/CTFStuff/tools/ | grep .sh)
+```
+
 ## [Interesting Vulnerabilities](VulnList.md)
 ## SQL Injection
 
@@ -118,6 +123,13 @@ e = int(key.e)
 ```
 
 ## STEG
+#### If you have 2 texts that seem to contain the same words:
+
+https://github.com/rw/plainsight
+
+```bash
+plainsight_decode.sh [ciphertext] [cleartext]
+```
 
 #### If text looks like a spam mail:
 
