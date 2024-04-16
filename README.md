@@ -118,6 +118,11 @@ e = int(key.e)
 ```
 
 ## STEG
+
+#### If text looks like a spam mail:
+
+https://spammimic.com/decode_fr.shtml
+
 #### Braille translator:
 
 https://www.branah.com/braille-translator
@@ -301,7 +306,7 @@ Use pwn to do syscalls:
 ```
         where $N <-- syscall name(ex: open, read, write)
 
-## Reverse:
+## Reverse
 
     If no idea what to find:
 
