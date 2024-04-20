@@ -107,6 +107,10 @@ Password bruteforce cracking from a hash: Hashcat
     hashcat -a 0(brute force) -m [n] (n = hash type) file.hash rockyou.txt
     hashcat -a 0(brute force) -m [n] (n = hash type) file.hash rockyou.txt -r oneruletorulethemall.rule
 
+To determine hash type: Check the begining of the hash:
+
+- $2y <- BCRYPT (uncrackable)
+- $2a <- BCRYPT (crackable)
 ## RSA
 
 https://github.com/RsaCtfTool/RsaCtfTool
@@ -340,6 +344,15 @@ sudo -u [user] #impersonate user
 
 If you are allowed to do a command on a path ending with /*, you can execute it anywhere
     
+### Useful to search:
+- .php files
+- .html/.js/.css
+- .db files
+- ./ssh
+    - id_rsa <- private key
+- ./etc ./www
+- .config files
+- .log files
 #### ex:
     
     User x may run the following commands on host_machine:
@@ -367,7 +380,8 @@ export PATH=/tmp
     STDOUT = 1
     STDERR = 2
 
-
+#### Cat file without putting spaces:
+`cat</path/to/file`
 ## Java
 
     javap.exe to get info on java
