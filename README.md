@@ -372,7 +372,11 @@ export PATH=/tmp
 
     javap.exe to get info on java
 
-## Sleuth
+## Forensics
+
+### Rust_file_crawler
+`rust_file_crawler.exe [folder] -c`
+### Sleuth
 
 Useful to do forensics on .img/.iso files
 
