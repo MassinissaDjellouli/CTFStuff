@@ -10,6 +10,8 @@
 
     gets() <-- Reads until newline, can pass in null bytes and its gonna read them
 
+    printf(to_print) <-- no format specifier given, we can pass our own
+
 ## Heap overflow
 
     Look for malloc functions
@@ -60,3 +62,34 @@ Use pwn to do syscalls:
         p.sendlineafter("printed text",asm(code))
 ```
         where $N <-- syscall name(ex: open, read, write)
+
+### Format String vuln
+
+- %08x prints 4 bytes of the stack in big endian format
+- %016lx prints 8 bytes of the stack in big endian format
+
+### Endianness:
+
+- ELF: `readelf -h [FILE]`
+- PE: Little endian
+- Windows ARM: Little endian
+- MIPS: Big endian but can support little endian 
+
+### Find function offset:
+
+#### ELF:
+- Not stripped
+- Func is not static or in annonymous namespace
+
+`get_func_offset.sh [FILE] [FUNC_NAME]`
+
+##### Function Virtual Address (VA):
+`readelf -s [FILE] | grep [FUNC_NAME] | grep -o -P "[0-9a-fA-F]{16}"` 
+
+##### .text section Offset:
+`readelf -S [FILE] | grep .text | grep -o -P "[0-9a-fA-F]{8}$"`
+
+##### .text section VA:
+`objdump -h [FILE] | grep .text | grep -o -P "[0-9a-fA-F]{8}[ ]+[0-9a-f]{16}" | grep -o -P "[0-9a-fA-F]{16}"` 
+
+Fn Offset = fn_VA - .text_VA + .text_Offset

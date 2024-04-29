@@ -55,3 +55,10 @@ https://georgeom.net/StegOnline/upload
 Stegonline: extract bytes from colors
 Ex: extract red/green/blue bit 1 from an image
 bit 0 or 1 are the least noticeable
+
+### APNG files:
+
+- Disassemble and check delays
+- Disassemble and check individual frames
+
+To disassemble use apgndis_gui.exe

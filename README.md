@@ -7,10 +7,9 @@ dos2unix $(ls /mnt/c/Users/massi/Desktop/CTFStuff/tools/ | grep .sh)
 
 ## [Web](TheGoodStuff/Web.md)
 
-
 ## [Crypto](TheGoodStuff/Crypto.md)
 
-
+## [Steg](TheGoodStuff/STEG.md)
 
 ## [PWN](TheGoodStuff/PWN.md)
 
