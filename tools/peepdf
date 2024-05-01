@@ -1,0 +1,3 @@
+#!/bin/bash
+
+python2 /mnt/c/Users/massi/Desktop/CTFStuff/tools/peepdf_0.3/peepdf.py -i

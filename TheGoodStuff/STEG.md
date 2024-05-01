@@ -55,3 +55,16 @@ https://georgeom.net/StegOnline/upload
 Stegonline: extract bytes from colors
 Ex: extract red/green/blue bit 1 from an image
 bit 0 or 1 are the least noticeable
+
+### If img looks like bad pixel art:
+https://www.bertnase.de/npiet/npiet-execute.php
+
+### Extract data from executable:
+
+https://github.com/woodruffw/steg86
+install version 0.1.2
+
+`cargo install steg86 --locked --version 0.1.2`
+
+`steg86 extract [FILE] > output`
+
