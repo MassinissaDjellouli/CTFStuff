@@ -12,7 +12,7 @@ We need to pass in an offset -> add `-o [offset]` to the command
 
 To get offsets on the image:
 `mmls [img]`
-Example result: ![Alt text](image-1.png)
+Example result: ![Alt text](img/sleuth.png)
 
 To get info on an image:
 `fsstat [img]` 

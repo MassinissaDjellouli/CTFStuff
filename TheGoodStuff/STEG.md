@@ -80,3 +80,7 @@ install version 0.1.2
 - peepdf
   - object [object_id] to extract
 - Start with the ![Suspicious element](img/Sus_el.png), and continue with the ![numbers Shown](img/pdf_nums.png)
+
+## Find code from physical key picture:
+
+https://keysgen.com/?service=keyCode

@@ -46,7 +46,7 @@ ex:
 ```
 
 #### asm code ex:
-![Alt text](../image.png)
+![Alt text](img/asm.png)
 
 rsp == stack pointer
 
