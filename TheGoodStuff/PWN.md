@@ -67,6 +67,8 @@ Use pwn to do syscalls:
 
 - %08x prints 4 bytes of the stack in big endian format
 - %016lx prints 8 bytes of the stack in big endian format
+- adding n$ between the % and the format allows to offset by n
+ 
 
 ### Endianness:
 
