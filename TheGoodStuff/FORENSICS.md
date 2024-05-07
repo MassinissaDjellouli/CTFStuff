@@ -22,3 +22,7 @@ To find a file in the image:
 
 To read the content of the file:
 `icat [img] [inode]`
+
+### Access Data FTK imager
+
+- Useful to mount images on your computer
