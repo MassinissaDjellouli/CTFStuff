@@ -1,0 +1,3 @@
+#!/bin/bash
+path="/mnt/c/\"Program Files\"/Java/jre-1.8/bin"
+echo $path

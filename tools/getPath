@@ -1,0 +1,3 @@
+#!/bin/bash
+path="/mnt/c/Users/massi/Desktop/CTFStuff/"
+echo $path
