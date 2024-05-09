@@ -2,7 +2,7 @@
 ```bash
 dos2unix $(ls /mnt/c/Users/massi/Desktop/CTFStuff/tools/ | grep .sh)
 ```
-
+## [Tool List](TheGoodStuff/TOOL_LIST.md)
 ## [Interesting Vulnerabilities](TheGoodStuff/VULN_LIST.md)
 
 ## [Web](TheGoodStuff/Web.md)
