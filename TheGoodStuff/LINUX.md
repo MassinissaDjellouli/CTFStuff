@@ -52,7 +52,7 @@ ls flag.txt
 cp /bin/cat /tmp/ls #if there are arguments after the ls, try using nano instead
 export PATH=/tmp 
 ```
-
+### 2. Pass a symlink to a file
 ### File descriptors:
     STDIN = 0
     STDOUT = 1
@@ -60,3 +60,4 @@ export PATH=/tmp
 
 ### Cat file without putting spaces:
 `cat</path/to/file`
+

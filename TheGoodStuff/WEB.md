@@ -8,6 +8,8 @@
 - Search for /robots.txt
 - If the server is apache, try /.htaccess
 - If MacOS: try /.DS_Store
+- humans.txt
+- Change user agent
 
 When prompted for a password:
 
@@ -31,6 +33,7 @@ If error:
 ## API
 - Check OPTIONS verb
 - Try every verb
+- Check openAPI/SwaggerUI endpoint
 - Try passing more fields in an "update" endpoint
 
 ex: If the user object is this: 
@@ -128,3 +131,11 @@ Read file:
 - unparsed_text('[FILE_NAME]') (XSLT 2.0)
 - php:function('file_get_contents','[FILE_NAME]')
 - php:function('opendir','[DIR]') -> php:function('readdir') * amount of files toread
+
+## Mock Server/API:
+https://beeceptor.com/
+
+## File uplaod 
+https://book.hacktricks.xyz/pentesting-web/file-upload
+- Addd a %0a to the name of the file between the .png and .php
+  - ex: test.png%0a.php

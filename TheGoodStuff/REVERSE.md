@@ -11,3 +11,6 @@
 
     Check IDA -> Graph view for each functions
     It is possible to draw an image using the graph view
+
+- Strace & Ltrace
+  - Library and System calls
