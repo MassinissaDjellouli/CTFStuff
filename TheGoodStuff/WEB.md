@@ -85,6 +85,13 @@ https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/XSS%20Injection/
 crackjwt.sh [jwtToken]
 ```
 
+For RSA signed tokens:
+
+- Burpsuite JWT Editor extension
+  - Create a RSA key
+  - In the repeater on the request sent with the cookie
+  - "Attack" button -> Embedded JWK
+
 
 ## Flask session token:
 - https://github.com/Paradoxis/Flask-Unsign

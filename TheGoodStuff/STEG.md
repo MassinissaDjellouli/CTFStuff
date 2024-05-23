@@ -27,8 +27,15 @@ https://www.branah.com/braille-translator
 - Check whitespaces (https://www.dcode.fr/langage-whitespace)
 
 ## Find files hidden in images or more:
-binwalk
-add `--dd='.*'` or `-Me` to extract
+- binwalk
+  - add `--dd='.*'` or `-Me` to extract
+- steghide
+
+
+## Audio:
+- Audacity
+  - Change mode to spectrogram
+    - Can show pictures
 
 ## Get Metadata:
 exiftool for images
@@ -84,3 +91,12 @@ install version 0.1.2
 ## Find code from physical key picture:
 
 https://keysgen.com/?service=keyCode
+
+## QR Codes:
+https://medium.com/@MrObvious/what-are-those-other-qr-codes-d4979c7448a
+
+- Different types of codes that look like qr codes:
+  - Aztec code
+    - Check the center of the code
+  - Data Matrix
+  - 
