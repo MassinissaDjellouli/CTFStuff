@@ -99,4 +99,6 @@ https://medium.com/@MrObvious/what-are-those-other-qr-codes-d4979c7448a
   - Aztec code
     - Check the center of the code
   - Data Matrix
-  - 
+  
+## Punchcards:
+- http://laighside.com/punchcard.htm

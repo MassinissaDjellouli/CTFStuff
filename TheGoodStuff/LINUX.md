@@ -61,3 +61,6 @@ export PATH=/tmp
 ### Cat file without putting spaces:
 `cat</path/to/file`
 
+### Pass commands as input
+If eval is used:
+- Pass command in between ``

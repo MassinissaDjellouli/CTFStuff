@@ -6,11 +6,13 @@
 - Inspect Debug tab
 - Inspect CSS
 - Search for /robots.txt
+  - Needs to be at the root of the website
 - If the server is apache, try /.htaccess
 - If MacOS: try /.DS_Store
 - humans.txt
 - Change user agent
-
+- Try every verb
+  
 When prompted for a password:
 
 - Try switching request to put or post

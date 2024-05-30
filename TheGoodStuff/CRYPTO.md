@@ -25,3 +25,9 @@ key = RSA.importKey(asciikey)
 n = int(key.n)
 e = int(key.e)
 ```
+
+## Zip passwords
+```bash 
+zip2john [ZIP] > out
+john --format=PKZIP --wordlist=/share/wordlists/rockyou.txt out
+```
