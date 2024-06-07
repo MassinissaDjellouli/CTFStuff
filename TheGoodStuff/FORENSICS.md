@@ -1,6 +1,8 @@
 [BACK](../README.md)
 # Forensics
-
+## Find strings
+- strings [FILE] | grep -Ei '.?f.?l.?a.?g.?-'
+  - searches for files with the word flag-
 ## Rust_file_crawler
 `rust_file_crawler.exe [folder] -c`
 ## Sleuth

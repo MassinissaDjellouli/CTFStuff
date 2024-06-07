@@ -102,3 +102,11 @@ https://medium.com/@MrObvious/what-are-those-other-qr-codes-d4979c7448a
   
 ## Punchcards:
 - http://laighside.com/punchcard.htm
+
+## Scytale
+https://legacy.cryptool.org/en/cto/scytale
+
+- Looks like rot cipher
+- Try different turns of band
+- try combining rot + scytale
+- Similar to rail fence but with straight lines instead of diagonal
