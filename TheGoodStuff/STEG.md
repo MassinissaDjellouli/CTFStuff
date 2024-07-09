@@ -15,6 +15,31 @@ https://spammimic.com/decode_fr.shtml
 ## Braille translator:
 
 https://www.branah.com/braille-translator
+https://abcbraille.com/braille
+
+Layout of a braille character:
+
+1 4
+2 5
+3 6
+
+Numbers:
+Either:
+Start with
+1 o
+2 o
+3 6
+
+OR
+
+uses the first letter of the alphabet and adds 
+
+o o
+o o
+3 o
+
+Grade 1 -> 1 Braille character == 1 character
+Grade 2 -> Can use 1 or more character to write a word
 
 ## Find hidden msgs in homoglyphs:
 
