@@ -32,7 +32,9 @@ If we have a shell that does not execute anything:
 Adding cat at the end lets us interact with the shell.
 
 ### Use python lib pwn to do asm syscalls:
+![Alt text](img/syscalls.png)
 
+https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md
 ex:
 ```py
     p = process("path/to/process")
@@ -50,16 +52,18 @@ ex:
 
 rsp == stack pointer
 
-Use pwn to do syscalls:
+Use pwnlib to do syscalls:
 ```py
+        from pwnlib.shellcraft import amd64
+        from pwnlib.asm import asm
         p = process("path/to/process")
         context.arch = "amd64"
         code = ""
-        code += shellcraft.amd.linux.$1(arg0,...,argN)
-        code += shellcraft.amd.mov(reg1,val)
-        code += shellcraft.amd.linux.$2(arg0,...,argN)
-        code += shellcraft.amd.linux.$3(arg0,...,argN)
-        p.sendlineafter("printed text",asm(code))
+        code += shellcraft.amd64.linux.$1(arg0,...,argN)
+        code += shellcraft.amd64.mov(reg1,val)
+        code += shellcraft.amd64.linux.$2(arg0,...,argN)
+        code += shellcraft.amd64.linux.$3(arg0,...,argN)
+        p.sendlineafter("printed text",asm(code,arch="amd64"))
 ```
         where $N <-- syscall name(ex: open, read, write)
 
@@ -95,3 +99,45 @@ Use pwn to do syscalls:
 `objdump -h [FILE] | grep .text | grep -o -P "[0-9a-fA-F]{8}[ ]+[0-9a-f]{16}" | grep -o -P "[0-9a-fA-F]{16}"` 
 
 Fn Offset = fn_VA - .text_VA + .text_Offset
+
+## Shellcode optimisations (amd64):
+- Use xor regA,regA -> set 0 
+- push 0; pop regA -> same length as xor
+- Use xchg to swap registers instead of 2 mov
+- push regA pop regB -> less bytes than a mov
+- xor regA,regA ; inc regA -> set 1
+- Using lower registers (ex: rax -> eax -> al) will give a different bytecode
+
+### Registers prefixes
+##### Extended regs(rax):
+48 
+##### 32 bit regs(eax):
+none
+##### 16 bit regs(ax)
+66
+##### 8 bit regs(al/ah)
+[decrement op num] 
+
+### Assembly to byte:
+
+xor: [reg prefix] 31 [registers]
+
+mov: [reg prefix] 89 [registers]
+
+### registers:
+
+    (rax,eax,ax):
+    al: 0xD8
+    ah: 0xDC
+
+    (rdi,edi,di):
+    dil: 0xDF
+    dih: 0xDE
+
+    (rdx,edx,dx):
+    dl: 0xDA
+    dh: 0xDF
+
+    (rsi,esi,si):
+    sl: 0xDE 
+    (no sih)
