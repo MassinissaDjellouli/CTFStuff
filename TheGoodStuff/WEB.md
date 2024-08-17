@@ -148,3 +148,11 @@ https://beeceptor.com/
 https://book.hacktricks.xyz/pentesting-web/file-upload
 - Addd a %0a to the name of the file between the .png and .php
   - ex: test.png%0a.php
+
+## Swagger endpoints:
+- /swagger-ui/index.html
+- /swagger
+- /swagger-ui
+- /docs
+- /redoc
+- /openapi.json
