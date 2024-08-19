@@ -31,6 +31,9 @@ useful for pwn challenges
 - ./etc ./www
 - .config files
 - .log files
+- grep -r "tofind" 2>/dev/null 
+  - search in all the files in a folder
+- find / -readable -and -user [user] 2>/dev/null | grep -v 'proc' | grep -v 'sys'
 ### ex:
     
     User x may run the following commands on host_machine:
@@ -64,3 +67,17 @@ export PATH=/tmp
 ### Pass commands as input
 If eval is used:
 - Pass command in between ``
+  
+### Bypass &>/dev/null
+- eval $(command) 2>&0
+  - execute the command
+  - tries to execute the result
+  - fails unless the result is a command
+  - prints to stderr the result of the command
+  - redirects stderr to stdin
+
+### Bypass characters
+- use ? for one or 2 unknown chars in paths
+- {startchar..endchar}\ can be used to loop through the characters in the interval
+  - ex: b and s are not allowed in the input, trying to launch bash:
+    - eval {a..c}a{r..t}h\;

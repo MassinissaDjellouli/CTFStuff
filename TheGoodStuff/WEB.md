@@ -95,7 +95,14 @@ For RSA signed tokens:
   - "Attack" button -> Embedded JWK
 
 
-## Flask session token:
+## Flask/Python web
+
+if urllib.parse used with urlsplit:
+- add `a:` in front of the scheme to break the split (scheme returned in the url)
+- add a `?` after the scheme to break (url returned in query)
+- same with `#` to return everthing in fragment 
+
+### Flask session token:
 - https://github.com/Paradoxis/Flask-Unsign
   - Needed for `crack_flask_token.sh` and `edit_flask_token.sh`
 - https://www.kirsle.net/wizards/flask-session.cgi

@@ -4,7 +4,7 @@
 - dnSpy for dotNET
 - Ghidra/Binary ninja for all purpose
 - GDB for linux
-- Immunity for Windows
+- Immunity/x64dbg for Windows
 - IDA if nothing else works
 
     If no idea what to find:
@@ -14,3 +14,9 @@
 
 - Strace & Ltrace
   - Library and System calls
+
+- If code does not have main:
+  - Check if it is packed
+    - if contains the string "UPX":
+      - use upx to unpack
+      - upx -d [file] -o [output]
