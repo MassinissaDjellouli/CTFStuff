@@ -5,7 +5,12 @@
 - Current at RSP
 - Goes DOWN
 - Return address is there
-
+## Checklist
+- file [path]
+    - 64 or 32 bit
+    - x86_64, Arm, x86?
+- checksec
+    - check securities on the file
 ## C vulnerabilities:
 
     gets() <-- Reads until newline, can pass in null bytes and its gonna read them
