@@ -5,6 +5,10 @@
     
 - Follow stream to read the data sent in one chunk
 - `File -> Export Objects -> [Protocol]` To get all the objects sent 
+- For multipart http packets:
+  - MIME Multipart Media encapsulation
+    - Encapsulating multipart part
+      - data: (content-type) <--- right click --> Export Packet Bytes
 
 ### Cisco IOS
 
