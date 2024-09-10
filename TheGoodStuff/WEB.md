@@ -12,7 +12,8 @@
 - humans.txt
 - Change user agent
 - Try every verb
-  
+- Check cookie
+  - try to modify it
 When prompted for a password:
 
 - Try switching request to put or post
