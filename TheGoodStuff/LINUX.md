@@ -81,3 +81,29 @@ If eval is used:
 - {startchar..endchar}\ can be used to loop through the characters in the interval
   - ex: b and s are not allowed in the input, trying to launch bash:
     - eval {a..c}a{r..t}h\;
+  
+## Conditionals:
+
+- -eq -> compare numbers
+- [  ] -> equivalent to test
+- -z -> empty string
+- -n -> not empty string
+- -e -> file exists
+- -f -> file exists and is a regular file
+- -d -> file exists and is a directory
+- -r -> file is readable
+- -w -> file is writable
+- -x -> file is executable
+- -o -> or
+- -a -> and
+- -gt -> greater than
+- -lt -> less than
+- -ge -> greater or equal
+- -le -> less or equal
+- -ne -> not equal
+
+### Unquoted expression injection
+if we use test or [   ] with an argument that is not quoted, we can inject conditinals
+```bash
+[ $VAR -eq $1 ] #we can pass something like 1 -o 1 -eq 1 to return true
+```
