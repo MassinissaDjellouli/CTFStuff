@@ -1,6 +1,7 @@
 [BACK](../README.md)
 # Web
-
+- If we always receive a set-cookie in the header
+  - if yes: That means it might not check for the expiration date of the cookie
 - Inspect HTML
 - Inspect JS
 - Inspect Debug tab
@@ -18,6 +19,11 @@ When prompted for a password:
 
 - Try switching request to put or post
 
+
+## Webpack
+The map file is a file that maps the minified code to the original code
+- If the map file is available, we can read the original code
+- You can find it with the static js files. It will be named the same as the js file with a .map at the end
 ## SQL Injection
 
 ```sql
@@ -116,6 +122,9 @@ crack_flask_token.sh [token]
 edit_flask_token.sh [payload] [secret]
 ```
 
+Flask can not check for the expiration date of the session token by default
+We can resend an old session and it will count as valid
+
 ## CSRF
 
 To recognize:
@@ -164,3 +173,10 @@ https://book.hacktricks.xyz/pentesting-web/file-upload
 - /docs
 - /redoc
 - /openapi.json
+
+## PHP
+PHP sessions are stored in /tmp by default
+if we have access to the server, we can read the session files and change our session token
+
+fonction sys_get_temp_dir() to get the system temp directory
+session_save_path() to get the session save path

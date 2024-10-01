@@ -1,5 +1,11 @@
 [BACK](../README.md)
 # PWN
+## Numbers:
+- Try negative number
+- Try int overflow: 4294967295
+- Try long overflow: 18446744073709551615
+- Try 0
+- Try decimal numbers
 ## Windows stack:
 - Starts at RBP
 - Current at RSP

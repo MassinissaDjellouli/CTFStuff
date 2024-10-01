@@ -19,3 +19,11 @@
 - Functions starting with "Sal"
   - ex: SalStrLength(str)
 - || is used to append strings
+
+### C/C++
+
+- mblen:
+  - Returns the number of bytes in the next multibyte character
+  - If the next character is a null byte, it returns 0
+  - If the next character is not a valid multibyte character, it returns -1
+  
