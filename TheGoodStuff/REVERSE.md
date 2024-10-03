@@ -1,7 +1,7 @@
 [BACK](../README.md)
 # Reverse
 
-- dnSpy for dotNET
+- dnSpy for dotNET and DLLs
 - Ghidra/Binary ninja for all purpose
 - GDB for linux
 - Immunity/x64dbg for Windows
