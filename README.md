@@ -5,9 +5,9 @@ dos2unix $(ls /mnt/c/Users/massi/Desktop/CTFStuff/tools/ | grep .sh)
 ## [Tool List](TheGoodStuff/TOOL_LIST.md)
 ## [Interesting Vulnerabilities](TheGoodStuff/VULN_LIST.md)
 
-## [Web](TheGoodStuff/Web.md)
+## [Web](TheGoodStuff/WEB.md)
 
-## [Crypto](TheGoodStuff/Crypto.md)
+## [Crypto](TheGoodStuff/CRYPTO.md)
 
 ## [Steg](TheGoodStuff/STEG.md)
 
@@ -17,18 +17,18 @@ dos2unix $(ls /mnt/c/Users/massi/Desktop/CTFStuff/tools/ | grep .sh)
 - https://github.com/Rajchowdhury420/CTF-CheatSheet
 - https://github.com/payloadbox/sql-injection-payload-list 
 
-## [Reverse](TheGoodStuff/Reverse.md)
+## [Reverse](TheGoodStuff/REVERSE.md)
 
-## [Linux](TheGoodStuff/Linux.md)
+## [Linux](TheGoodStuff/LINUX.md)
 ## Java
 
     javap.exe to get info on java
 
-## [Forensics](TheGoodStuff/Forensics.md)
+## [Forensics](TheGoodStuff/FORENSICS.md)
 ## [Programming](TheGoodStuff/PROGRAMMING.md)
 
-## [Networking](TheGoodStuff/Networking.md)
+## [Networking](TheGoodStuff/NETWORKING.md)
 
-## [Mobile](TheGoodStuff/Mobile.md)
+## [Mobile](TheGoodStuff/MOBILE.md)
 
-## [Databases](TheGoodStuff/Databases.md)
+## [Databases](TheGoodStuff/DATABASES.md)
