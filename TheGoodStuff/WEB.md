@@ -18,7 +18,7 @@
 When prompted for a password:
 
 - Try switching request to put or post
-
+- Try checking for /.git
 
 ## Webpack
 The map file is a file that maps the minified code to the original code
@@ -185,3 +185,6 @@ if we have access to the server, we can read the session files and change our se
 
 fonction sys_get_temp_dir() to get the system temp directory
 session_save_path() to get the session save path
+
+## Other
+- To dump the content of a directory from a website: `wget -r -np -nH --cut-dirs=3 -R index.html http://hostname/aaa/bbb/ccc/ddd/`

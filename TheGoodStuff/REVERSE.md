@@ -20,3 +20,6 @@
     - if contains the string "UPX":
       - use upx to unpack
       - upx -d [file] -o [output]
+
+## Python
+https://github.com/zrax/pycdc
