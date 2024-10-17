@@ -23,3 +23,5 @@
 
 ## Python
 https://github.com/zrax/pycdc
+https://pyinstxtractor-web.netlify.app/
+https://pylingual.io/
