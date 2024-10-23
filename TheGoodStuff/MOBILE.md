@@ -7,3 +7,6 @@
 ### Flutter RE
 
 https://github.com/Impact-I/reFlutter
+
+### Frida
+#### to check out: https://frida.re
