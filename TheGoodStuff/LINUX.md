@@ -12,9 +12,9 @@ sudo -u [user] #impersonate user
 ```
 
 If you are allowed to do a command on a path ending with /*, you can execute it anywhere
-## Get info about ELF files:
-`readelf [file]`
-
+## ELF files:
+- Get info about an elf file: `readelf [file]`
+- [Diagram of an elf file structure](img/ELF_Executable_and_Linkable_Format_diagram_by_Ange_Albertini.png) 
 ## Unix bins that can bypass security stuff
 https://gtfobins.github.io/
 
