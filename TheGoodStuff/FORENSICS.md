@@ -32,3 +32,16 @@ To read the content of the file:
 ### Find a location
 - Coords converter:
   -  https://www.earthpoint.us/Convert.aspx
+
+## Image/Firmware
+
+- 2 Types of file systems
+  - SquashFS
+    - Has a sqashfs-root folder
+  - JFFS2
+    - Has a jffs2-root folder
+- `binwalk -Me` to extract
+- .cgi files are executable
+  - Can be an ELF file or a shell script
+  - Can be interesting to reverse
+  - Strings can be useful
