@@ -16,8 +16,7 @@
 - Check cookie
   - try to modify it
 When prompted for a password:
-
-- Try switching request to put or post
+  - Try switching request to put or post
 - Try checking for /.git
 
 ## Webpack

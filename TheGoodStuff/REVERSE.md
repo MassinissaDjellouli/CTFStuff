@@ -25,3 +25,11 @@
 https://github.com/zrax/pycdc
 https://pyinstxtractor-web.netlify.app/
 https://pylingual.io/
+
+## Arduino 
+### ATMega328
+https://www.jonaslieb.de/blog/arduino-ghidra-intro/
+- RESET interrupt handler
+- 2 functions in the bottom, first is the main function
+  - Main is split in the setup and loop functions
+  - loop is in the `do {...} while(true);`
