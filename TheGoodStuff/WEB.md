@@ -18,6 +18,8 @@
 When prompted for a password:
   - Try switching request to put or post
 - Try checking for /.git
+## IP Spoofing
+- Add X-Forwarded-For header with the IP you want to spoof
 
 ## Webpack
 The map file is a file that maps the minified code to the original code

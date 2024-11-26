@@ -12,7 +12,9 @@
     - co_varnames: tuple of variable names
     - co_names: tuple of names used in the function
     - co_code: bytecode of the function
-
+- Can leak data with format string vulnerabilities
+  - ex: username = "{}".format(user_input)
+  - user_input = "__init__.__globals__[sercret_key]"
 ### Python 2
 - `input()` is equivalent to `eval(raw_input())`
 - func_code is used instead of __code__
