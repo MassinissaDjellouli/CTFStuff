@@ -1,8 +1,10 @@
 import pwnlib.tubes.remote as remote
+import pwnlib.tubes.process as process
 import time
-nc = "c.unitedctf.ca"
-port = 10033
-r = remote.remote(nc,port)
+# nc = "c.unitedctf.ca"
+# port = 10033
+# r = remote.remote(nc,port)
+r = process.process(["/mnt/c/Users/massi/Downloads/sources-go-pwn-gown/app/gown"])
 
 def readline(endOfLine="\n"):
     data = b""
@@ -22,10 +24,9 @@ def readall():
 
 def sendline(toSend):
     r.send(f'{toSend}\n'.encode())
+def sendbytes(toSend:bytes):
+    r.send(toSend)
 
-print(readlines(3))
-sendline("🗿🗿")
-time.sleep(1)
-sendline("__y\0")
+
 res = readall()
 print(res)

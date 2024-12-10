@@ -21,6 +21,8 @@
       - use upx to unpack
       - upx -d [file] -o [output]
 
+https://www.angusj.com/resourcehacker/
+
 ## Python
 https://github.com/zrax/pycdc
 https://pyinstxtractor-web.netlify.app/

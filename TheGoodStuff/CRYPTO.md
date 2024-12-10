@@ -31,3 +31,8 @@ e = int(key.e)
 zip2john [ZIP] > out
 john --format=PKZIP --wordlist=/share/wordlists/rockyou.txt out
 ```
+
+## mRemoteNg config files
+- https://www.errno.fr/mRemoteNG
+- Default pwd: `mR3m`
+- `python3 tools/mremoteng_decrypt.py [FILE]` to decrypt the passwords
