@@ -88,6 +88,12 @@ https://requestbin.myworkato.com/
 
 Can add link to img src, or change window.location to this and add "?flag=" + document.cookie
 
+- Interesting to capture:
+  - document.cookie
+  - document.location
+  - document.body.innerHTML
+
+
 ### Different Angular XSS payloads
 https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/XSS%20Injection/XSS%20in%20Angular.md
     

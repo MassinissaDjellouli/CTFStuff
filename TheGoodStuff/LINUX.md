@@ -107,3 +107,11 @@ if we use test or [   ] with an argument that is not quoted, we can inject condi
 ```bash
 [ $VAR -eq $1 ] #we can pass something like 1 -o 1 -eq 1 to return true
 ```
+
+### Useful commands:
+- `echo -n` -> no newline
+- `cut -d [delimiter] -f [index]` -> cut by delimiter and get input at index (Starts at 1)
+- `cut -c [start]-[end]` -> cut by character
+- `tr -d [char]` -> delete all instance of [char]
+- `tr -s [char_array] [char]` -> replace all char in [char_array] with [char]
+- `xxd -r -p` -> convert hex to ascii

@@ -59,3 +59,7 @@
 - htons() -> Takes 16 bit number in the host os byte order (big/little endian) and returns the value in TCP/IP byte order
 - HWND -> Window Handle
 - LPCSTR -> 32 bit ptr to a constant string of ANSI chars (LP = Long pointer)
+
+### Rust
+- Cargo can execute code at build time if a build.rs file is present
+  - Can be used to run arbitrary code
