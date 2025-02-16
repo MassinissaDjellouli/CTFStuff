@@ -1,0 +1,1 @@
+sudo pip3 install git+https://github.com/casics/nostril.git
