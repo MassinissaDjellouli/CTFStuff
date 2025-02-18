@@ -36,3 +36,14 @@ john --format=PKZIP --wordlist=/share/wordlists/rockyou.txt out
 - https://www.errno.fr/mRemoteNG
 - Default pwd: `mR3m`
 - `python3 tools/mremoteng_decrypt.py [FILE]` to decrypt the passwords
+
+## AES
+
+ECB:
+- Each block is encrypted independently
+- Same plaintext block will always result in the same ciphertext block
+- Vulnerable to known plaintext attacks
+
+CBC:
+- Each block is XORed with the previous ciphertext block
+- First block is XORed with an IV

@@ -1,2 +1,4 @@
 /tmp/*
 /venv/*
+/venv-wndw/*
+/**/*.pyc
