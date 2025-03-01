@@ -15,6 +15,14 @@
 - Can leak data with format string vulnerabilities
   - ex: username = "{}".format(user_input)
   - user_input = "__init__.__globals__[sercret_key]"
+- Mutable variables
+  - If a mutable variable is used as a default argument, it will be shared between all calls to the function
+    - ex: def f(a=[]): a.append(1); return a
+    - f() -> [1]
+    - f() -> [1,1]
+    - f() -> [1,1,1]
+  - To avoid this, use None as the default argument and set the default value inside the function
+    - ex: def f(a=None): if a is None: a = []; a.append(1); return a
 ### Python 2
 - `input()` is equivalent to `eval(raw_input())`
 - func_code is used instead of __code__
@@ -63,3 +71,11 @@
 ### Rust
 - Cargo can execute code at build time if a build.rs file is present
   - Can be used to run arbitrary code
+
+### Ruby
+- Can concatenate strings using << operator with bytes
+  - ex: "" << 65 << 66 << 67 -> "ABC"
+- Can create empty string using eval(%%%)
+- same with %<>
+- eval("$*<<$0;p *$<")
+  - Read the content of the running file and print it 
