@@ -36,5 +36,21 @@
             "console": "integratedTerminal",
             "args": "-k \"YELLOW SUBMARINE\" -a auto -th -s -f -dh tmp/8.txt "
         },
+        {
+            "name": "aes3",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "tools/crypto-tools/aes.py",
+            "console": "integratedTerminal",
+            "args": "-k \"YELLOW SUBMARINE\" -a cbc -tb -f -i 0000000000000000 -Ih tmp/10.txt "
+        },
+        {
+            "name": "aesOracle",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "tools/crypto-tools/aes.py",
+            "console": "integratedTerminal",
+            "args": "-o ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"
+        },
     ]
 }

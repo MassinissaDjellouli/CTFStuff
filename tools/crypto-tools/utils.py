@@ -45,11 +45,11 @@ def nonsense_check(enc: bytes):
     except:
         return True
 
-def parse_key(k,kt):
+def parse_byte_arg(k,kt, error_msg):
     key = bytes()
     match k:
         case None:
-            print("Key is required")
+            print(error_msg)
             exit(1)
         case _:
             key = bytes()

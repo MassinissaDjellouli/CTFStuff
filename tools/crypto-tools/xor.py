@@ -5,9 +5,10 @@ from utils import (
     NONE_DISPLAY,
     default_display,
     get_default_arg_parser,
+    hamming_distance,
     parse_display,
     parse_enc,
-    parse_key,
+    parse_byte_arg,
 )
 
 
@@ -149,7 +150,7 @@ def run(arguments):
     display = parse_display(arguments.display)
 
     if not arguments.brute_force:
-        key = parse_key(arguments.key, arguments.key_type)
+        key = parse_byte_arg(arguments.key, arguments.key_type, "Key is required")
         for enc in encs:
             xor(key, enc, display)
         return
@@ -163,21 +164,21 @@ def run(arguments):
         try_single_char_xor(enc, display)
 
 
-arg_parser = get_default_arg_parser("XOR utility")
-arg_parser.add_argument(
-    "--brute-force",
-    "-b",
-    help="Brute force the key",
-    action="store_true",
-    default=False,
-)
-arg_parser.add_argument(
-    "--unknown-key-size",
-    "-u",
-    help="Unknown key size for brute force",
-    action="store_true",
-)
-
-arguments = arg_parser.parse_args()
 if __name__ == "__main__":
+    arg_parser = get_default_arg_parser("XOR utility")
+    arg_parser.add_argument(
+        "--brute-force",
+        "-b",
+        help="Brute force the key",
+        action="store_true",
+        default=False,
+    )
+    arg_parser.add_argument(
+        "--unknown-key-size",
+        "-u",
+        help="Unknown key size for brute force",
+        action="store_true",
+    )
+
+    arguments = arg_parser.parse_args()
     run(arguments)
