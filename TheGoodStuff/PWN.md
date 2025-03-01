@@ -162,3 +162,14 @@ mov: [reg prefix] 89 [registers]
     (rsi,esi,si):
     sl: 0xDE 
     (no sih)
+
+## ROP:
+- Find gadgets:
+  - objdump
+  - `rp++ --unique -r [gadget_length] -f [file]`
+    - length 2 should be good
+- Can jump in middle of instruction
+- Jumping to leave will move rbp to rbp
+- Try building shellcode of what is needed then try to recreate it with gadgets
+  - Syscalls are very rare
+- 
