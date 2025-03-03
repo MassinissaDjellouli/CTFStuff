@@ -63,7 +63,8 @@ export PATH=/tmp
 
 ### Cat file without putting spaces:
 `cat</path/to/file`
-
+### Bypasse space:
+${IFS} == space
 ### Pass commands as input
 If eval is used:
 - Pass command in between ``
