@@ -1,56 +1,64 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "xor1",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "tools/crypto-tools/xor.py",
-            "console": "integratedTerminal",
-            "args": "-th -b -u -dw 0b3637272a2b2e63622c2e69692a23693a2a3c6324202d623d63343c2a26226324272765272a282b2f20430a652e2c652a3124333a653e2b2027630c692b20283165286326302e27282f"
-        },
-        {
-            "name": "xor2",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "tools/crypto-tools/xor.py",
-            "console": "integratedTerminal",
-            "args": "-tb -b -u -f -dw tmp/6.txt "
-        },
-        {
-            "name": "aes1",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "tools/crypto-tools/aes.py",
-            "console": "integratedTerminal",
-            "args": "-k \"YELLOW SUBMARINE\" -tb -f tmp/7.txt "
-        },
-        {
-            "name": "aes2",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "tools/crypto-tools/aes.py",
-            "console": "integratedTerminal",
-            "args": "-k \"YELLOW SUBMARINE\" -a auto -th -s -f -dh tmp/8.txt "
-        },
-        {
-            "name": "aes3",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "tools/crypto-tools/aes.py",
-            "console": "integratedTerminal",
-            "args": "-k \"YELLOW SUBMARINE\" -a cbc -tb -f -i 0000000000000000 -Ih tmp/10.txt "
-        },
-        {
-            "name": "aesOracle",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "tools/crypto-tools/aes.py",
-            "console": "integratedTerminal",
-            "args": "-o ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"
-        },
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "xor1",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "tools/crypto-tools/xor.py",
+      "console": "integratedTerminal",
+      "args": "-th -b -u -dw 0b3637272a2b2e63622c2e69692a23693a2a3c6324202d623d63343c2a26226324272765272a282b2f20430a652e2c652a3124333a653e2b2027630c692b20283165286326302e27282f"
+    },
+    {
+      "name": "xor2",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "tools/crypto-tools/xor.py",
+      "console": "integratedTerminal",
+      "args": "-tb -b -u -f -dw tmp/6.txt "
+    },
+    {
+      "name": "aes1",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "tools/crypto-tools/aes.py",
+      "console": "integratedTerminal",
+      "args": "-k \"YELLOW SUBMARINE\" -tb -f tmp/7.txt "
+    },
+    {
+      "name": "aes2",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "tools/crypto-tools/aes.py",
+      "console": "integratedTerminal",
+      "args": "-k \"YELLOW SUBMARINE\" -a auto -th -s -f -dh tmp/8.txt "
+    },
+    {
+      "name": "aes3",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "tools/crypto-tools/aes.py",
+      "console": "integratedTerminal",
+      "args": "-k \"YELLOW SUBMARINE\" -a cbc -tb -f -i 0000000000000000 -Ih tmp/10.txt "
+    },
+    {
+      "name": "aesOracle",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "tools/crypto-tools/aes.py",
+      "console": "integratedTerminal",
+      "args": "-o ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"
+    },
+    {
+      "name": "nc",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "tools/nc-tools/nc.py",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    }
+  ]
 }

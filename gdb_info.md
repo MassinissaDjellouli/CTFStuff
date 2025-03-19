@@ -2,7 +2,7 @@ info proc mappings:
 
     Permet de voir la memory de notre programme
 
-x/{nb d'instruction}{format} {adresse}
+x/{nb d'instruction}i {adresse}
 
     Permet d'examiner une adresse
 
