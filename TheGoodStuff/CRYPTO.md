@@ -47,3 +47,8 @@ ECB:
 CBC:
 - Each block is XORed with the previous ciphertext block
 - First block is XORed with an IV
+
+## Bcrypt:
+
+- BCrypt only uses the first 72 bytes to hash
+- if we know a part of these 72 bytes we can bruteforce the rest

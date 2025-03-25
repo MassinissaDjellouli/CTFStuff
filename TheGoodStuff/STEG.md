@@ -142,5 +142,6 @@ https://legacy.cryptool.org/en/cto/scytale
 - Similar to rail fence but with straight lines instead of diagonal
 
 ## Other
-
 - Music sheet : Velato
+- Bunch of squares: ![example](./img/dotsies.png)
+  - dotsies: https://www.cachesleuth.com/codes/dotsies.html

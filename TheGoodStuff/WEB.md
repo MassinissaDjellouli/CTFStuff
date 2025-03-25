@@ -93,6 +93,7 @@ Can add link to img src, or change window.location to this and add "?flag=" + do
   - document.location
   - document.body.innerHTML
 
+If we can add css we can use the payload in `tools/css-keylogger' to capture keystrokes
 
 ### Different Angular XSS payloads
 https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/XSS%20Injection/XSS%20in%20Angular.md
@@ -195,3 +196,4 @@ session_save_path() to get the session save path
 
 ## Other
 - To dump the content of a directory from a website: `wget -r -np -nH --cut-dirs=3 -R index.html http://hostname/aaa/bbb/ccc/ddd/`
+- If we have command injection but can't easily exfiltrate the data, we can try to move the data in a file in the "public" directory. Then we can access it from the browser

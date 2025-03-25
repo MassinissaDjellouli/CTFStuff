@@ -50,22 +50,23 @@ class InteractiveNC:
         self.command_prefix = command_prefix
         self._commands = {}
         self.add_command("b", self._back_command)
-        self.add_command("s",self._store_command)
-        self.add_command("+",self._add_command)
-        self.add_command("-",self._sub_command)
-        self.add_command("*",self._mul_command)
-        self.add_command("/",self._div_command)
-        self.add_command("a",self._append_command)
-        self.add_command("sl",self._slice_command)
-        self.add_command("v",self._add_var_command)
-        self.add_command("d",self._dump_vars_command)
-        self.add_command("p",self._print_last_received_command)
-        self.add_command("16",self._hex_command)
-        self.add_command("10",self._dec_command)
-        self.add_command("e",self._eval_command)
-        self.add_command("h",self._help_command)
-        self.add_command("c",self._copy_command)
-        self.add_command("q",self._quit_command)
+        self.add_command("s", self._store_command)
+        self.add_command("+", self._add_command)
+        self.add_command("-", self._sub_command)
+        self.add_command("*", self._mul_command)
+        self.add_command("/", self._div_command)
+        self.add_command("a", self._append_command)
+        self.add_command("sl", self._slice_command)
+        self.add_command("v", self._add_var_command)
+        self.add_command("d", self._dump_vars_command)
+        self.add_command("p", self._print_last_received_command)
+        self.add_command("16", self._hex_command)
+        self.add_command("10", self._dec_command)
+        self.add_command("e", self._eval_command)
+        self.add_command("h", self._help_command)
+        self.add_command("c", self._copy_command)
+        self.add_command("q", self._quit_command)
+        self.add_command("pid", self._pid_command)
         self._input_queue = []
 
     def set_vars(self, vars: dict[str, bytes]):
@@ -85,28 +86,41 @@ class InteractiveNC:
         :param func: The function to execute when the command is called
         """
         if not func.__name__.startswith("_"):
-            print(f"Warning: command {name} is named {func.__name__}, which does not start with an underscore. Command ignored.")
+            print(
+                f"Warning: command {name} is named {func.__name__}, which does not start with an underscore. Command ignored."
+            )
             return
         if name in self._commands:
             print(f"Warning: command {name} already exists. Command ignored.")
             return
         argc = func.__code__.co_argcount
         if 1 > argc > 2:
-            print(f"Warning: command {name} has {argc} arguments. Expected 1. Command ignored.")
+            print(
+                f"Warning: command {name} has {argc} arguments. Expected 1. Command ignored."
+            )
             return
-        
+
         if argc == 2 and func.__code__.co_varnames[0] != "self":
-            print(f"Warning: command {name} has an invalid first argument. Expected self. Command ignored.")
+            print(
+                f"Warning: command {name} has an invalid first argument. Expected self. Command ignored."
+            )
             return
-        
-        if func.__code__.co_varnames[argc - 1] not in func.__annotations__ or func.__annotations__[func.__code__.co_varnames[argc - 1]] != list[str]:
-            print(f"Warning: command {name} has an invalid argument type. Expected list[str]. Command ignored.")
+
+        if (
+            func.__code__.co_varnames[argc - 1] not in func.__annotations__
+            or func.__annotations__[func.__code__.co_varnames[argc - 1]] != list[str]
+        ):
+            print(
+                f"Warning: command {name} has an invalid argument type. Expected list[str]. Command ignored."
+            )
             return
-        
+
         if func.__annotations__.get("return", None) != bool:
-            print(f"Warning: command {name} has an invalid return type. Expected bool. Command ignored.")
+            print(
+                f"Warning: command {name} has an invalid return type. Expected bool. Command ignored."
+            )
             return
-        
+
         self._commands[name] = func
 
     def _command_prefix(self) -> str:
@@ -140,7 +154,7 @@ class InteractiveNC:
             except EOFError:
                 break
 
-    def _help_command(self,  _: list[str]) -> bool:
+    def _help_command(self, _: list[str]) -> bool:
         """
         Command name: h
         Description: Display available commands and important variables
@@ -157,7 +171,17 @@ class InteractiveNC:
         print(f"{self._command_prefix()}last_eval_res: Last result of an eval command")
         return True
 
-    def _quit_command(self,  _: list[str]) -> bool:
+    def _pid_command(self, _: list[str]) -> bool:
+        """
+        Command name: pid
+        Description: Display the PID of the process
+
+        Usage: !pid
+        """
+        print(f"PID: {self.r.pid}")
+        return True
+
+    def _quit_command(self, _: list[str]) -> bool:
         """
         Command name: q
         Description: Exit the program
@@ -167,6 +191,7 @@ class InteractiveNC:
         print("Exiting")
         self.r.close()
         exit(0)
+
     def _handle_input(self):
         inp = input() if len(self._input_queue) == 0 else self._input_queue.pop(0)
         if inp == f"{self._command_prefix()}i":
@@ -196,7 +221,7 @@ class InteractiveNC:
             if not res:
                 break
 
-    def _eval_command(self,  args: list[str]) -> bool:
+    def _eval_command(self, args: list[str]) -> bool:
         """
         Command name: e
         Description: Evaluate an expression and store the result in last_eval_res
@@ -215,7 +240,7 @@ class InteractiveNC:
 
         return True
 
-    def _copy_command(self,  args: list[str]) -> bool:
+    def _copy_command(self, args: list[str]) -> bool:
         """
         Command name: c
         Description: Copy a variable to another
@@ -502,7 +527,7 @@ class InteractiveNC:
             print(f"{k}: {v.decode("latin1")}")
         return True
 
-    def _print_last_received_command(self,  _: list[str]) -> bool:
+    def _print_last_received_command(self, _: list[str]) -> bool:
         """
         Command name: p
         Description: Print the last received data
