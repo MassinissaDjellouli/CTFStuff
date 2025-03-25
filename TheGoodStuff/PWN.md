@@ -112,7 +112,6 @@ Use pwnlib to do syscalls:
       - it is going to be stored at rsp+0x18/4th arg on the stack/%9$
     - Result: We write 1 to the address 0x0000000000404012
     - dynamically find a pointer to write to:
-    res = readlines(15).split("\n")
 ```python
     #Leak a random pointer on the stack, that points to another location on the stack
     sendline("%372$x")

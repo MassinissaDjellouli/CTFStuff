@@ -45,3 +45,7 @@ To read the content of the file:
   - Can be an ELF file or a shell script
   - Can be interesting to reverse
   - Strings can be useful
+
+## MFT
+- https://github.com/rowingdude/analyzeMFT for linux
+- Eric Zimmerman's tools for windows

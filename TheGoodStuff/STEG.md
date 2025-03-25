@@ -7,6 +7,11 @@ https://github.com/rw/plainsight
 ```bash
 plainsight_decode.sh [ciphertext] [cleartext]
 ```
+## Ciphers
+- Check if rotX cipher first
+- If we have a key check if its a vigenere cipher
+- If it looks like a vigenere cipher, check if it's a substition cipher
+  - https://www.dcode.fr/substitution-cipher
 
 ## If text looks like a spam mail:
 
