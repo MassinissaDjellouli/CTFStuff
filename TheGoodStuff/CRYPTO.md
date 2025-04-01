@@ -12,6 +12,8 @@ To determine hash type: Check the begining of the hash:
 - $2y <- BCRYPT (uncrackable)
 - $2a <- BCRYPT (crackable)
 ## RSA
+- Try first: https://www.dcode.fr/chiffre-rsa
+
 
 https://github.com/RsaCtfTool/RsaCtfTool
 

