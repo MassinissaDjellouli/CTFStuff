@@ -6,6 +6,8 @@
 - Inspect JS
 - Inspect Debug tab
 - Inspect CSS
+- Try directory listing 
+  - ex: if we are in /instructions/instruction.html -> /instructions
 - Search for /robots.txt
   - Needs to be at the root of the website
 - If the server is apache, try /.htaccess
@@ -47,6 +49,9 @@ get tables:
 - Try every verb
 - Check openAPI/SwaggerUI endpoint
 - Try passing more fields in an "update" endpoint
+- Try different version of api
+  - ex if api uses /v2 try /v1
+- Check Accept header
 
 ex: If the user object is this: 
 ```json
