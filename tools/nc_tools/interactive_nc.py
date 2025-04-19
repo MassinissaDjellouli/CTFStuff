@@ -1,6 +1,7 @@
 import readline
 
 from pwnlib import *
+from pwnlib.tubes.tube import tube as Tube 
 
 
 class InteractiveNC:
@@ -40,8 +41,10 @@ class InteractiveNC:
     ```
     """
 
-    def __init__(self, tube, vars={}, command_prefix="#$"):
-        self.r: tubes.tube = tube
+    def __init__(self, tube:Tube, vars: dict[str, bytes]|None=None, command_prefix="#$"):
+        if vars is None:
+            vars = {}
+        self.r: Tube = tube
         self.vars: dict[str, bytes] = dict(
             [(k, v if isinstance(v, bytes) else v.encode()) for k, v in vars.items()]
         )
@@ -152,7 +155,8 @@ class InteractiveNC:
                 print(self.last_received.decode("latin1"), end="")
                 self._handle_input()
             except EOFError:
-                break
+                print(f"EOFError: Exiting. Last received: {self.last_received.decode('latin1')}")
+                exit(0)
 
     def _help_command(self, _: list[str]) -> bool:
         """

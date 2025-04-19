@@ -34,3 +34,15 @@ r < {filepath}
 run < <(printf '[ToInject]')
 
     permet de run en injectant un input dans stdin 
+
+command
+    permet de faire une commande quand le breakpoint est atteint
+    
+    fini avec end
+
+    ex:
+    command 1
+        set $rdi = 0xdeadbeef
+        echo "hello world"
+        x/10x $rdi
+    end

@@ -56,7 +56,7 @@
       "name": "nc",
       "type": "debugpy",
       "request": "launch",
-      "program": "tools/nc-tools/nc.py",
+      "program": "tools/nc_tools/nc.py",
       "console": "integratedTerminal",
       "justMyCode": false
     }
