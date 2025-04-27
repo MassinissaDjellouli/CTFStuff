@@ -1,9 +1,7 @@
 import readline
 
 from pwnlib import *
-from pwnlib.tubes.tube import tube as Tube 
-
-
+from pwnlib.tubes.tube import tube as Tube
 class InteractiveNC:
     """
     Class to interact with a remote connection or process in an interactive way.
@@ -152,6 +150,10 @@ class InteractiveNC:
                 continue
             try:
                 self.last_received = b"\n".join(self.r.recvlines(timeout=0.1))
+                rcvd = b""
+                self.last_received = rcvd
+                while (rcvd:=self.r.recv(timeout=0.1)) != b"":
+                    self.last_received += rcvd
                 print(self.last_received.decode("latin1"), end="")
                 self._handle_input()
             except EOFError:
