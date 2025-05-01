@@ -60,11 +60,19 @@ export PATH=/tmp
     STDIN = 0
     STDOUT = 1
     STDERR = 2
-
+    
+### 3. If a program is used in the suid execution, you can switch it for another
+```bash
+#ex: program calls /bin/bash -c "md5sum flag.txt"
+which md5sum
+# "/usr/bin/md5sum" <- We have the perms to modify it
+cp /usr/bin/cat /usr/bin/md5sum #<- replaced md5sum with cat
+./program #<- program will call /usr/bin/cat instead of /usr/bin/md5sum
+```
 ### Cat file without putting spaces:
 `cat</path/to/file`
 ### Bypass space:
-${IFS} == space
+ ${IFS} == space
 ### Pass commands as input
 If eval is used:
 - Pass command in between ``

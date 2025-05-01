@@ -1,6 +1,7 @@
 [BACK](../README.md)
 # Reverse
 
+- DetectItEasy (die) for information about the binary
 - dnSpy for dotNET and DLLs
 - Ghidra/Binary ninja for all purpose
 - GDB for linux

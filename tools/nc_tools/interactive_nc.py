@@ -149,7 +149,6 @@ class InteractiveNC:
                 self._handle_input()
                 continue
             try:
-                self.last_received = b"\n".join(self.r.recvlines(timeout=0.1))
                 rcvd = b""
                 self.last_received = rcvd
                 while (rcvd:=self.r.recv(timeout=0.1)) != b"":
