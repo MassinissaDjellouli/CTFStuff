@@ -49,3 +49,28 @@ To read the content of the file:
 ## MFT
 - https://github.com/rowingdude/analyzeMFT for linux
 - Eric Zimmerman's tools for windows
+
+## Volatility
+Windows:
+- vol -f "[MemoryDump]" -o "[OutFolder]" windows.cmdline
+  - Get the command line arguments of all processes
+  - equivalent to `ps -ef`
+- vol -f "[MemoryDump]" -o "[OutFolder]" windows.pslist
+  - Get the list of processes
+  - equivalent to `ps aux`
+- vol -f "[MemoryDump]" -o "[OutFolder]" windows.filescan
+  - Get the list of files
+  - useful info: grep Users | grep -v "AppData"
+- vol -f "[MemoryDump]" -o "[OutFolder]" windows.dumpfiles.DumpFiles --virtaddr [FileAddr]
+  - Dump a file from memory
+  - --virtaddr is the address of the file in memory
+  - it can be found with the windows.filescan command
+  
+
+## TestDisk
+- To recover files from a disk img
+- testdisk [img]
+We can:
+- List files on disk
+  - includes deleted files
+- Copy a file from the disk to our computer

@@ -121,7 +121,6 @@ Python example:
 # loops and if are also possible :
 {% for i in range(100) %}{%if i % 2 == 0 %}{{i}}{% endif %}{% endfor %}
 ```
-
 Payloads: 
 - https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection
   - Useful to check if there is a filter on characters
