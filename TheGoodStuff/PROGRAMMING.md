@@ -23,8 +23,6 @@
     - f() -> [1,1,1]
   - To avoid this, use None as the default argument and set the default value inside the function
     - ex: def f(a=None): if a is None: a = []; a.append(1); return a
-- Quick template:
-  - ().__class__.__bases__[0].__subclasses__()[INDEX_OF_POPEN](["/bin/cat","flag"], stdout=-1).communicate()
 ### Python 2
 - `input()` is equivalent to `eval(raw_input())`
 - func_code is used instead of __code__
