@@ -20,6 +20,8 @@
 When prompted for a password:
   - Try switching request to put or post
 - Try checking for /.git
+
+
 ## IP Spoofing
 - Add X-Forwarded-For header with the IP you want to spoof
 
@@ -81,6 +83,13 @@ Useful to check:
 - login.php
 - Add ~ at the end of the php files
     - Vim backup files are stored with the file name + ~
+- Try //path
+  - ex: localhost:8080//etc/passwd
+    - This will be interpreted as /etc/passwd instead of $CWD/etc/passwd
+- To get the current working directory:
+  - /proc/self/cwd returns the program working directory
+  - /proc/self/cmdline returns the command line that was used to start the process
+  - /proc/self/exe returns the executable that was used to start the process
 - /etc/apache2/sites-enabled/000-default or /etc/apache2/sites-available/default
 - if ../ is sanitized, try ....// or ....\/
 - may need to double urlencode 
@@ -94,6 +103,18 @@ ex:
 ```
 If we can upload and choose the file name:
 - Add our public key to a user’s authorized_keys file (/root/.ssh/authorized_keys)
+### Interesting files to read:
+- /etc/passwd
+- /etc/shadow
+- /etc/hosts
+- /etc/nginx/nginx.conf
+- /var/log/nginx/access.log
+- /var/log/nginx/error.log
+- /etc/apache2/apache2.conf
+- /etc/apache2/sites-enabled/000-default.conf
+- /etc/apache2/sites-available/default
+
+
 ## XSS
 
 To try to intercept requests from the page:
