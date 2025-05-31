@@ -66,7 +66,9 @@ Grade 2 -> Can use 1 or more character to write a word
 - Audacity
   - Change mode to spectrogram
     - Can show pictures
-
+- If we have modem sounds:
+  - [minimodem](https://github.com/kamalmostafa/minimodem)
+  - can try different baud
 ## Get Metadata:
 exiftool for images
 pdfinfo for pdfs
@@ -129,7 +131,7 @@ https://medium.com/@MrObvious/what-are-those-other-qr-codes-d4979c7448a
   - Aztec code
     - Check the center of the code
   - Data Matrix
-  
+- Colored triangles is a High Capacity color Barcode ![hccb](img/High_Capacity_Color_Barcode_Tag.svg.png)
 ## Punchcards:
 - http://laighside.com/punchcard.htm
 
@@ -145,3 +147,7 @@ https://legacy.cryptool.org/en/cto/scytale
 - Music sheet : Velato
 - Bunch of squares: ![example](./img/dotsies.png)
   - dotsies: https://www.cachesleuth.com/codes/dotsies.html
+- Ogham alphabet:
+
+  ![ogham](img/picture11.png)
+- Moon script: ![alt text](img/picture12.png)
