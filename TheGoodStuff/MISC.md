@@ -11,3 +11,9 @@ Discord & Twitter
 11-0  (12 bits) - sequence number
 ### Discord snowflake decoder
 https://snowsta.mp/
+
+## Base64
+
+b64decode does not take spaces into account
+    ZmxhZy10aGlzaXNiNjQ= is the same as ZmxhZy10a GlzaXNiNjQ=
+If we are comparing a string with base64, we can add spaces to control the result of the comparaison

