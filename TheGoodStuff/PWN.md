@@ -211,4 +211,5 @@ mov: [reg prefix] 89 [registers]
 - Jumping to leave will move rbp to rbp
 - Try building shellcode of what is needed then try to recreate it with gadgets
   - Syscalls are very rare
-- 
+
+## Heap exploitation:

@@ -1,0 +1,3 @@
+#!/bin/bash 
+path=$("getPath")
+$path"tools/de4dot-net8.0-winx64/de4dot.exe" "$@"

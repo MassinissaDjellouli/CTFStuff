@@ -36,3 +36,11 @@ https://www.jonaslieb.de/blog/arduino-ghidra-intro/
 - 2 functions in the bottom, first is the main function
   - Main is split in the setup and loop functions
   - loop is in the `do {...} while(true);`
+
+## C#/DotNET
+- dnSpy
+- if the file seems obfuscated: de4dot
+  - de4dot -d [file]
+    - detect the obfuscator
+  - de4dot -r [directory] -ru -ro [output_directory]
+    - recursively deobfuscate all the files in a directory
