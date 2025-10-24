@@ -1,8 +1,25 @@
 #!/bin/bash
+
+chmod +x ./getPath
 path=$("./getPath")
-java=$("./getJavaPath")
-export='export PATH="$PATH:'$java':'$path'tools"'
+
+run(){
+    local name=$1
+
+    executable = $path'tools/'$name
+
+    chmod +x $executable
+    $executable
+}
+
+# java=$("./getJavaPath")
+export='export PATH="$PATH:'$path'tools"'
 grep -qxF "$export" ~/.bashrc || echo "$export" >> ~/.bashrc
 
-aliases='alias java="java.exe";alias ctf="cd '$path
-grep -qxF "$aliases" ~/.bashrc || echo "$aliases" >> ~/.bashrc
+alias1='alias java="java.exe"'
+alias2='alias ctf="cd '$path'"'
+grep -qxF "$alias1" ~/.bashrc || echo "$alias1" >> ~/.bashrc
+grep -qxF "$alias2" ~/.bashrc || echo "$alias2" >> ~/.bashrc
+
+run "setup_plainsight.sh"
+run "instal_vol.sh"
