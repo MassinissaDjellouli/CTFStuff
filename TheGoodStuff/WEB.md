@@ -258,11 +258,28 @@ https://book.hacktricks.xyz/pentesting-web/file-upload
 - /openapi.json
 
 ## PHP
-PHP sessions are stored in /tmp by default
-if we have access to the server, we can read the session files and change our session token
+- PHP sessions are stored in /tmp by default
+  - if we have access to the server, we can read the session files and change our session token
+- fonction sys_get_temp_dir() to get the system temp directory
+- session_save_path() to get the session save path
+- PHP after 7.40 automatically sanitizes arguments when passed in an array in proc_open
 
-fonction sys_get_temp_dir() to get the system temp directory
-session_save_path() to get the session save path
+## Proxy bypass
+### Lighttpd
+- A TE header converts a "Connection: close" to "Connection: close, te"
+  - Gunicorn, for example, only closes a connection if it sees exactly "Connection: close"
+  - Adding the TE header can bypass the deny clause of Lighttpd
+
+## Polyglot files
+- We can have files that work as multiple file types at the same time
+  - PNG + PHP
+    - image readers usually ignore data after IEND chunk
+    - So we can add the data we want after the IEND chunk to have a valid PNG and a valid PHP file
+  - JPG + PHP
+    - Usually image readers will accept data in the exif metadata
+    - We can use exiftool to add PHP code in the exif metadata
+      - exiftool -Comment='<?php phpinfo(); ?>' image.jpg
+
 
 ## Other
 - To dump the content of a directory from a website: `wget -r -np -nH --cut-dirs=3 -R index.html http://hostname/aaa/bbb/ccc/ddd/`

