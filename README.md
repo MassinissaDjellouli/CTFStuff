@@ -1,6 +1,6 @@
 #### Annoying crap to use bash scripts:
 ```bash
-dos2unix $(ls /mnt/c/Users/massi/Desktop/CTFStuff/tools/ | grep .sh)
+dos2unix $(ls . | grep .sh)
 ```
 ## [Tool List](TheGoodStuff/TOOL_LIST.md)
 ## [Interesting Vulnerabilities](TheGoodStuff/VULN_LIST.md)

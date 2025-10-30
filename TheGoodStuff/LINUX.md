@@ -45,6 +45,10 @@ useful for pwn challenges
 
 If file permission has: -##s##### (s instead of x for root permission) -> <strong>SUID</strong>
 
+To find suid files:
+```bash
+find / -perm -4000 2>/dev/null
+``` 
 ### 1. Change PATH variable
 #### Example:
 ```bash
@@ -124,6 +128,8 @@ if we use test or [   ] with an argument that is not quoted, we can inject condi
 - `tr -d [char]` -> delete all instance of [char]
 - `tr -s [char_array] [char]` -> replace all char in [char_array] with [char]
 - `xxd -r -p` -> convert hex to ascii
+- `uniq` -> remove duplicate lines
+- `sort` -> sort lines
 
 ## SSH
 

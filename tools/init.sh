@@ -1,13 +1,14 @@
 #!/bin/bash
 
 chmod +x ./getPath
+dos2unix ./getPath
 path=$("./getPath")
 
 run(){
     local name=$1
 
     executable = $path'tools/'$name
-
+    dos2unix $executable
     chmod +x $executable
     $executable
 }
