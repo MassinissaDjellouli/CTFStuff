@@ -200,7 +200,7 @@ mov: [reg prefix] 89 [registers]
 
     (rsi,esi,si):
     sl: 0xDE 
-    (no sih)
+    (no sh)
 
 ## ROP:
 - Find gadgets:
@@ -213,3 +213,66 @@ mov: [reg prefix] 89 [registers]
   - Syscalls are very rare
 
 ## Heap exploitation:
+### Glibc malloc internals:
+- Chunks:
+- Each chunk has a header of 16 bytes (on 64bit)
+  - Previous size (8 bytes)
+  - Size (8 bytes)
+  - User data
+- When a chunk is freed, the first 16 bytes of user data are used for bookkeeping
+  - Forward pointer (8 bytes)
+  - Backward pointer (8 bytes)
+- When malloc is called, it first checks TCache for available chunks
+- If TCache is empty, it checks Fastbins, then Smallbins, then Largebins
+- If no suitable chunk is found, it requests more memory from the OS using mmap or sbrk
+- Realloc does not use the TCache
+### Glibc malloc bins:
+#### Tcache bins: 0x20 to 0x410 (16 to 1040 bytes)
+- TCache bins are singly linked lists
+- Each TCache bin can hold up to 7 chunks
+- No coalescing is done on free
+- Chunks are not sorted by size
+- Bin sizes are aligned to 0x10 so there are bins for 0x20, 0x30, 0x40, ..., 0x410
+  - ex: 0x25 bytes requested -> 0x30 bin
+#### Fastbins: 0x20 to 0x70 (16 to 112 bytes)
+- Fastbins are singly linked lists
+- No coalescing is done on free
+- Chunks are not sorted by size
+#### Smallbins: 0x80 to 0x400 (128 to 1024 bytes)
+- Smallbins are doubly linked lists
+- Coalescing is done on free
+- Chunks are sorted by size
+#### Largebins: > 0x400 ( > 1024 bytes)
+- Largebins are doubly linked lists
+- Coalescing is done on free
+- Chunks are sorted by size
+#### Unsorted bin: all sizes
+- Unsorted bin is a doubly linked list
+- Coalescing is done on free
+- Chunks are not sorted by size
+- When a chunk is freed, it is first placed in the unsorted bin
+- When malloc is called, if no suitable chunk is found in the other bins, the unsorted bin is checked
+- If a suitable chunk is found, it is removed from the unsorted bin and placed in the appropriate bin
+- If no suitable chunk is found, the next chunk in the unsorted bin is checked
+- If no suitable chunk is found in the unsorted bin, more memory is requested from the OS
+#### Call order when freeing:
+- Tcache -> Fastbin -> Unsorted bin -> Smallbin -> Largebin
+#### Call order when allocating:
+- Tcache -> Fastbin -> Smallbin -> Largebin -> Unsorted bin
+
+## MISC:
+### pthread_getattr_np(pthread_t thread_id, pthread_attr_t *attr):
+- Tested for glibc 2.39
+- Used to get stack address of thread
+- When called, if there is an error, __pthread_attr_destroy is called, and the error code is returned
+  - __pthread_attr_destroy frees only attr.extension.cpuset and iattr.extension, without nulling them.
+- if we donc check the error code and keep using attr, we have a use after free vuln
+#### Links:
+- https://elixir.bootlin.com/glibc/glibc-2.39/source/nptl/pthread_attr_destroy.c#L25
+- https://elixir.bootlin.com/glibc/glibc-2.39/source/nptl/pthread_attr_setaffinity.c#L45
+- https://elixir.bootlin.com/glibc/glibc-2.39/source/nptl/pthread_attr_extension.c#L28
+- https://elixir.bootlin.com/glibc/glibc-2.39/source/nptl/pthread_getattr_np.c#L203
+
+#### Ways to make it fail:
+- If we have control over thread_id, we can pass an invalid one
+- If low memory limits are set, malloc/calloc inside pthread_getattr_np can fail

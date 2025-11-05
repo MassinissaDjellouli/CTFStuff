@@ -51,7 +51,27 @@ https://www.angusj.com/resourcehacker/
         x/10x $rdi
     end
   ```
-
+- shell
+  - allows to run a shell command from gdb
+- got
+  - shows the Global Offset Table  
+  - Also shows the protection on the GOT
+- define {name}
+  - Allows to define a custom function
+  - ends with end
+  - ex:
+  - ```
+    define save_registers
+        shell python run.py
+        info proc mappings
+        run
+    end
+  ```
+- vmmap {address}
+  - shows the memory mapping of the address
+  - $rip can be used as address to get the current instruction mapping
+- ptype {struct}
+  - shows the definition of a struct 
 ## Python
 https://github.com/zrax/pycdc
 https://pyinstxtractor-web.netlify.app/
