@@ -20,7 +20,7 @@ def br(func, off=0):
 def gdb_script(*args):
     return "\n".join(args) + "\n"
 gdbscript = gdb_script(
-    br(""),
+    br("main"),
 )
 
 

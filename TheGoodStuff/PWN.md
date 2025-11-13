@@ -227,17 +227,19 @@ mov: [reg prefix] 89 [registers]
 - If no suitable chunk is found, it requests more memory from the OS using mmap or sbrk
 - Realloc does not use the TCache
 ### Glibc malloc bins:
-#### Tcache bins: 0x20 to 0x410 (16 to 1040 bytes)
+#### Tcache bins: 0x20 to 0x410 (16 to 1032 bytes)
 - TCache bins are singly linked lists
 - Each TCache bin can hold up to 7 chunks
 - No coalescing is done on free
 - Chunks are not sorted by size
 - Bin sizes are aligned to 0x10 so there are bins for 0x20, 0x30, 0x40, ..., 0x410
   - ex: 0x25 bytes requested -> 0x30 bin
-#### Fastbins: 0x20 to 0x70 (16 to 112 bytes)
+- Double free check on every entry
+#### Fastbins: 0x20 to 0x70 (16 to 88 bytes)
 - Fastbins are singly linked lists
 - No coalescing is done on free
 - Chunks are not sorted by size
+- Double free check only on the first entry
 #### Smallbins: 0x80 to 0x400 (128 to 1024 bytes)
 - Smallbins are doubly linked lists
 - Coalescing is done on free
@@ -276,3 +278,20 @@ mov: [reg prefix] 89 [registers]
 #### Ways to make it fail:
 - If we have control over thread_id, we can pass an invalid one
 - If low memory limits are set, malloc/calloc inside pthread_getattr_np can fail
+
+## FSOP
+- Very useful on exiting programs that call fclose on FILE pointers
+### VTable overwrite
+- The IO_FILE_plus struct has a vtable pointer at the end
+- We can make the ptr point to a controlled location and build a fake vtable
+- Since libc 2.27, there is a check to see if the vtable pointer is in __libc_IO_vtables or _IO_vtable_check
+- To bypass this, we can point the vtable pointer to a location in libc that is in __libc_IO_vtables
+### Wide VTable
+- if the IO_FILE.mode is > 0, the code paths are a bit different
+- There is a way to make the libc use IO_FILE.wide_data.vtable instead of IO_FILE.vtable
+- We can then make IO_FILE.wide_data.vtable point to a controlled location
+### codecvt
+- If the IO_FILE.mode is > 0
+- The codecvt facet is used to convert between narrow and wide characters
+- IO_FILE has a pointer to the codecvt
+- codecvt is a struct, with "__cd_in" and "__cd_out" ptrs, which both contains a "step" ptr, which contains a function ptr

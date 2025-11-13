@@ -1,0 +1,1 @@
+alias pwninit='pwninit $@ --template-path "$CTF_STUFF""templates/pwninit.py"'
