@@ -1,0 +1,11 @@
+#!/bin/bash
+if [ -z "$1" ]
+then
+    echo "Pass a java file path"
+    exit
+fi
+touch /tmp/detect.yml
+echo "input: $1" > /tmp/detect.yml
+echo "detect: true" >> /tmp/detect.yml
+java -jar deobfuscator.jar --config /tmp/detect.yml
+rm /tmp/detect.yml
