@@ -28,6 +28,7 @@ gdbscript = gdb_script(
 
 @contextmanager
 def launch(local=True, debug=False, aslr=False, argv=None, envp=None):
+    global target    
     target = None
 
     try:
@@ -51,16 +52,16 @@ def launch(local=True, debug=False, aslr=False, argv=None, envp=None):
 
 def main():
     try:
-        with launch(debug=True) as target:
-            if attack(target):
+        with launch(debug=True):
+            if attack():
                 log.success("Attack completed successfully.")
             else:
                 log.failure("Attack did not yield a flag.")
     except Exception as e:
         log.exception(f"An error occurred in main: " + str(e))
 
-def attack(io):
-    io.interactive()
+def attack():
+    target.interactive()
     return True
 
 if __name__ == "__main__":
