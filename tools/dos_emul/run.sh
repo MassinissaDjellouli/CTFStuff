@@ -1,0 +1,1 @@
+qemu-system-i386 -hda dos.qcow2 -m 16M -drive file=fat:rw:ROOT_PATH,format=raw,media=disk -serial mon:stdio

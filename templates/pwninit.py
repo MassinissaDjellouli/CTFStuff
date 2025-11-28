@@ -7,9 +7,7 @@ from pwn import *
 context(log_level="debug")
 context.terminal = ["tmux", "split-window", "-h"]
 
-FILE = "/challenge/ello-ackers"
 HOST, PORT = "chals.ctf.csaw.io", 21006
-PAYLOAD_SIZE = 0xF0
 
 {bindings}
 
