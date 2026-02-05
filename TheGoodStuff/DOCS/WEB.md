@@ -20,6 +20,8 @@
 When prompted for a password:
   - Try switching request to put or post
 - Try checking for /.git
+- Run a nmap -p-
+
 
 
 ## IP Spoofing
@@ -249,6 +251,13 @@ Read file:
 - php:function('file_get_contents','[FILE_NAME]')
 - php:function('opendir','[DIR]') -> php:function('readdir') * amount of files toread
 
+## XXE
+- If we have XML(ex: XML http request) we can try XXE
+- https://portswigger.net/web-security/xxe
+- We can inject a DOCTYPE with an ENTITY that points to a file
+- ex: <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
+- to get our input back, we can use &[ENTITY_NAME]; in the XML body
+
 ## Mock Server/API:
 https://beeceptor.com/
 
@@ -277,6 +286,11 @@ https://book.hacktricks.xyz/pentesting-web/file-upload
     - A warning is send back
       - That means the request can't change the header
       - That can be used to avoid CSP
+### POP chains
+- If we have unserialization in PHP, we can try to use POP chains to get RCE
+- With custom classes with __destruct, __wakeup or other magic methods, we can try to chain them to get RCE
+- By controlling the properties of the classes, we can try to reach code execution
+- https://vickieli.dev/insecure%20deserialization/pop-chains/
 ## Proxy bypass
 ### Lighttpd
 - A TE header converts a "Connection: close" to "Connection: close, te"

@@ -36,7 +36,7 @@ def launch(local=True, debug=False, aslr=False, argv=None, envp=None):
             context.binary = {bin_name}
             
             if debug:
-                target = gdb.debug({proc_args}, gdbscript=gdbscript)
+                target = gdb.debug({proc_args} + (argv or []), gdbscript=gdbscript)
                 log.info(f"PID: "+ str(target.pid))
             else:
                 target = process({proc_args} + (argv or []), env=envp,aslr=aslr)
