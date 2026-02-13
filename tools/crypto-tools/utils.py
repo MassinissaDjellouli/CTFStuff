@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
 from base64 import b64decode
-from nostril import nonsense
+# from nostril import nonsense
 def from_str(string: str) -> bytes:
     return bytes(string, "utf-8")
 
@@ -21,10 +21,10 @@ def default_display(enc: bytes, key: bytes):
     print(enc.decode("latin-1"))
 
 
-def word_display(enc: bytes, key: bytes):
-    if not nonsense_check(enc):
-        print(f"Key: {key.hex()}")
-        print(enc.decode("latin-1"))
+# def word_display(enc: bytes, key: bytes):
+#     if not nonsense_check(enc):
+#         print(f"Key: {key.hex()}")
+#         print(enc.decode("latin-1"))
 
 
 def hex_display(enc: bytes, key: bytes):
@@ -39,11 +39,11 @@ def numeric_display(enc: bytes, key: bytes):
 def NONE_DISPLAY():
     pass
 
-def nonsense_check(enc: bytes):
-    try:
-        return nonsense(enc.decode("latin-1"))
-    except:
-        return True
+# def nonsense_check(enc: bytes):
+#     try:
+#         return nonsense(enc.decode("latin-1"))
+#     except:
+#         return True
 
 def parse_byte_arg(k,kt, error_msg):
     key = bytes()
@@ -106,8 +106,8 @@ def parse_display(d):
             display = hex_display
         case "n":
             display = numeric_display
-        case "w":
-            display = word_display
+        # case "w":
+        #     display = word_display
         case _:
             display = default_display
     return display

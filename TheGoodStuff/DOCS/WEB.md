@@ -22,11 +22,19 @@ When prompted for a password:
 - Try checking for /.git
 - Run a nmap -p-
 
-
+## Prototype pollution
+- If we can modify __proto__ for an object, we can add/modify properties for all js objects.
+- Usually, unserialisation can cause prototype polution.
+  - ex:
+    - flatnest
+    - mongoose 
 
 ## IP Spoofing
 - Add X-Forwarded-For header with the IP you want to spoof
-
+- If we use nodejs on the background:
+  - nodejs.Socket has a _peername that is lazy created. (does not exist before the call to get/set)
+  - connection.remoteAddress uses _peername.address
+  - we can set it using prototype pollution
 ## Webpack
 The map file is a file that maps the minified code to the original code
 - If the map file is available, we can read the original code
@@ -143,7 +151,10 @@ Can add link to img src, or change window.location to this and add "?flag=" + do
 
 If we can add css we can use the payload in `tools/css-keylogger' to capture keystrokes
 
-If we need to do a GET request without js, we can add an img src with the link we want to send the request to
+If we need to do a GET request without js:
+- We can add an img src with the link we want to send the request to
+- We can use an iframe with the src set to the link we want to send the request to
+  - added bonus: we can display the result of the request in the iframe
 
 If we need to do a POST request without js, we can add a form with the method set to POST and the action set to the link we want to send the request to (needs user/bot to click on it)
 
@@ -153,7 +164,10 @@ https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/XSS%20Injection/
 
 ## Serverside Template Injection (SSTI):
 ### jinja
-If we can a template from user input, we can inject code in the template
+If we create a template from user input, we can inject code in the template
+- render_template_string(user_input)
+- render_template(user_input)
+- Flask_mako render_template is vulnerable to Mako template injection           
 Python example:
 ```python
 # In this case 356 is the index of subprocess.Popen in the list of subclasses
@@ -167,6 +181,7 @@ Python example:
 Payloads: 
 - https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection
   - Useful to check if there is a filter on characters
+https://cheatsheet.hackmanit.de/template-injection-table/
 
 ### Thymeleaf
 ```html
@@ -213,6 +228,12 @@ edit_flask_token.sh [payload] [secret]
 
 Flask can not check for the expiration date of the session token by default
 We can resend an old session and it will count as valid
+
+## React2Shell
+- If we use react 19.0.0-19.2.0 it is vulnerable to react2shell
+- Same with versions of next.js
+- https://github.com/freeqaz/react2shell
+- https://github.com/RavinduRathnayaka/CVE-2025-55182-PoC 
 
 ## CSRF
 

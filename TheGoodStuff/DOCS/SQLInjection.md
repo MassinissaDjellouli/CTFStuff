@@ -1,6 +1,8 @@
 [BACK](../README.md)
 
 https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection
+https://portswigger.net/web-security/sql-injection/cheat-sheet
+
 ## Find db type:
 
 | DB Type    | Command |
@@ -41,3 +43,11 @@ https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection
 
 
 SELECT group_concat(name) from pragma_table_info('users') --
+
+## Blind SQLi:
+- We can try different things if we can't get the table results.
+- Cases:
+    1) If we can get a boolean response (Something happened vs nothing happened) we can use that to enumerate data 1 character at a time.
+    2) If we can throw an exception that is not catched, we can use a case statement to throw depending on the condition, briging us back to 1)
+    3) If we can cause a time delay, we can use a case statement to cause the delay depending on the condition, briging us back to 1)
+    4) If we can't cause a time delay, we can try to send a DNS query.
