@@ -353,3 +353,10 @@ https://book.hacktricks.xyz/pentesting-web/file-upload
  //instead of
  console.log("test")
  ```
+- Fastify uses only utf-8, and in the keys of the objects, it wont recognize characters that are not valid utf-8.
+  - If the server is using a backend like express, we can use something like utf-7
+  - ex: proxy looks for "admin" === "meow", backend looks for "admin" === "grr"
+    - By setting the content-type to "application/json; charset=utf-7" the express backend will decode the keys in utf-7, while the proxy will see them as utf-8
+    - we can send {"admin":"meow","+AGE-dmin":"grr"}
+    - The proxy will see the first key and value as "admin"
+    - By default V8 will take the last value in json

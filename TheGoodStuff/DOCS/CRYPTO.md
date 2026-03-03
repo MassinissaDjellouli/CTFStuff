@@ -54,3 +54,6 @@ CBC:
 
 - BCrypt only uses the first 72 bytes to hash
 - if we know a part of these 72 bytes we can bruteforce the rest
+
+## Other
+- If the amount of data is a square number, we can try to reshape it into a square matrix and apply some transformations to find patterns
