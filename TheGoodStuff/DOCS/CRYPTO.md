@@ -28,6 +28,9 @@ n = int(key.n)
 e = int(key.e)
 ```
 
+### If we have N
+https://factordb.com/index.php
+
 ## Zip passwords
 ```bash 
 zip2john [ZIP] > out
