@@ -67,3 +67,8 @@ ASM x86_64 directives:
 https://docs.oracle.com/cd/E26502_01/html/E28388/eoiyg.html
 
 strace: Useful to see the syscalls that a program does.
+
+## Shellcoding
+
+- Shellcraft module from pwntools
+- Encoding module can be used to avoid specific bytes in the shellcode

@@ -21,7 +21,7 @@ When prompted for a password:
   - Try switching request to put or post
 - Try checking for /.git
 - Run a nmap -p-
-
+- Wappalyzer to check for the tech stack
 ## Prototype pollution
 - If we can modify __proto__ for an object, we can add/modify properties for all js objects.
 - Usually, unserialisation can cause prototype polution.

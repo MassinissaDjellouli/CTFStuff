@@ -132,6 +132,9 @@ https://medium.com/@MrObvious/what-are-those-other-qr-codes-d4979c7448a
     - Check the center of the code
   - Data Matrix
 - Colored triangles is a High Capacity color Barcode ![hccb](img/High_Capacity_Color_Barcode_Tag.svg.png)
+
+https://merri.cx/qrazybox/
+- Magic qr code tool
 ## Punchcards:
 - http://laighside.com/punchcard.htm
 
