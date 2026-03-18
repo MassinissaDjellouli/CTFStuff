@@ -128,16 +128,25 @@ https://www.jonaslieb.de/blog/arduino-ghidra-intro/
 - set architecture [ARCH] in GDB to set the architecture
 - target extended-remote 127.0.0.1:1234 to connect to QEMU
 
-### Java
-#### Tools
+## Java
+### Tools
 - Bytecode-viewer
   - Pretty useful to use different decompilers/dissasemblers on the same program
 - Krakatau
   - Pretty much the best dissasembler/assembler for Java bytecode 
-#### Bytecode
+### Bytecode
 - Differents variants of instructions depending on the size of the values:
   - int/floats/fct_ref -> 1 slot
   - longs/doubles -> 2 slots
 - ldc/ldc2_w
   - loads a constant in the stack
--  
+
+## Windows 16-bit / DOS
+- VDOS
+  - the DEBUG software comes with it
+  - Works like a simplified version of GDB
+- https://wiki.osdev.org/Expanded_Main_Page
+  - Contains loads of info on old disk images/old os reverse
+### Floppy images
+- If its a DOS/MBR bootsector: offset is usually 0x7C00 in binja
+- qemu-system-x86_64 -drive format=raw,file=[FILE]
