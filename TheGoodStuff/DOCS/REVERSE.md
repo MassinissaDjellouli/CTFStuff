@@ -150,3 +150,16 @@ https://www.jonaslieb.de/blog/arduino-ghidra-intro/
 ### Floppy images
 - If its a DOS/MBR bootsector: offset is usually 0x7C00 in binja
 - qemu-system-x86_64 -drive format=raw,file=[FILE]
+
+## WASM
+
+- HELL
+- wabt is very useful to convert between wat and wasm
+  - wasm2c is very useful to convert wasm to c code
+    - wasm2c [FILE.wasm] -o [FILE.c]
+    - gcc -c -o wasmbin [WASM.C] -I wabt/wasm2c
+      - wabt/wasm2c is from the source code repository of wabt
+      - needed to have the headers
+  - Makes it much easier to understand the code
+  - Gives the function names 
+  - wasm2wat will also give the function names in the wat format

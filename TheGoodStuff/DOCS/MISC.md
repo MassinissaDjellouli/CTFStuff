@@ -58,3 +58,9 @@ If we are comparing a string with base64, we can add spaces to control the resul
     ```
   - This can be used to bypass filters that use regex to block certain words
     - ex: if we want to block "alert", we can use /a/g to match the first "a", then the next test() will start from the last index and will not match "lert"
+
+## CVEs
+
+- We can look on exploitDB for exploits related to the CVE we found
+- https://www.exploit-db.com/search?
+
