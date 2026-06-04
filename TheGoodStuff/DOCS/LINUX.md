@@ -97,6 +97,12 @@ If eval is used:
   
 ## Conditionals:
 
+- -a -> and
+- -gt -> greater than
+- -lt -> less than
+- -ge -> greater or equal
+- -le -> less or equal
+- -ne -> not equal
 - -eq -> compare numbers
 - [  ] -> equivalent to test
 - -z -> empty string
@@ -148,6 +154,13 @@ Check /etc/ssh/ssh_config for the ssh config
 - `uname -a` -> get kernel version
 - ip_xfrm_state -> shows the state of the ipsec connections
 
+## Find
+- suid files: `find . -perm -4000 2>/dev/null`
+
+## PrivEsc:
+- run getcap to get a list of capabilities on a binary
+  - if cap_setuid is set, we can change the effective uid to 0 (root)
+- Linpeas is a script that checks for a lot of common linux privesc vectors 
 ## Misc
 - If arguments are not in quotes, we can inject commands
 - If command injection is not possible, we an inject arguments to a command

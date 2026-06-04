@@ -79,3 +79,6 @@ We can:
 - dwm.exe is the Desktop Window Manager in windows
 - DWM uses DirectCompistion/Direct3D to render the windows
 - That means the process memory contains the content of the windows in a flat BGRA array (4bytes per pixel)
+
+## Windows DFIR cheat sheet
+![cheat sheet](img/dfir.png)
