@@ -1,87 +1,84 @@
-[BACK](../README.md)
 # STEG
-## If you have 2 texts that seem to contain the same words:
+
+[BACK](../)
+
+## STEG
+
+### If you have 2 texts that seem to contain the same words:
 
 https://github.com/rw/plainsight
 
 ```bash
 plainsight_decode.sh [ciphertext] [cleartext]
 ```
-## Ciphers
-- Check if rotX cipher first
-- If we have a key check if its a vigenere cipher
-- If it looks like a vigenere cipher, check if it's a substition cipher
-  - https://www.dcode.fr/substitution-cipher
 
-## If text looks like a spam mail:
+### Ciphers
 
-https://spammimic.com/decode_fr.shtml
+* Check if rotX cipher first
+* If we have a key check if its a vigenere cipher
+* If it looks like a vigenere cipher, check if it's a substition cipher
+  * https://www.dcode.fr/substitution-cipher
 
-## Braille translator:
+### If text looks like a spam mail:
 
-https://www.branah.com/braille-translator
-https://abcbraille.com/braille
+https://spammimic.com/decode\_fr.shtml
+
+### Braille translator:
+
+https://www.branah.com/braille-translator https://abcbraille.com/braille
 
 Layout of a braille character:
 
-1 4
-2 5
-3 6
+1 4 2 5 3 6
 
-Numbers:
-Either:
-Start with
-1 o
-2 o
-3 6
+Numbers: Either: Start with 1 o 2 o 3 6
 
 OR
 
-uses the first letter of the alphabet and adds 
+uses the first letter of the alphabet and adds
 
-o o
-o o
-3 o
+o o o o 3 o
 
-Grade 1 -> 1 Braille character == 1 character
-Grade 2 -> Can use 1 or more character to write a word
+Grade 1 -> 1 Braille character == 1 character Grade 2 -> Can use 1 or more character to write a word
 
-## Find hidden msgs in homoglyphs:
+### Find hidden msgs in homoglyphs:
 
-    https://holloway.nz/steg/
+```
+https://holloway.nz/steg/
+```
 
-## Hidden msgs in plain text:
+### Hidden msgs in plain text:
 
-- Check first word of lines
-- Check first letter of line
-- Check whitespaces (https://www.dcode.fr/langage-whitespace)
+* Check first word of lines
+* Check first letter of line
+* Check whitespaces (https://www.dcode.fr/langage-whitespace)
 
-## Find files hidden in images or more:
-- binwalk
-  - add `--dd='.*'` or `-Me` to extract
-- steghide
+### Find files hidden in images or more:
 
+* binwalk
+  * add `--dd='.*'` or `-Me` to extract
+* steghide
 
-## Audio:
-- Audacity
-  - Change mode to spectrogram
-    - Can show pictures
-- If we have modem sounds:
-  - [minimodem](https://github.com/kamalmostafa/minimodem)
-  - can try different baud
-## Get Metadata:
-exiftool for images
-pdfinfo for pdfs
-strings for text files
+### Audio:
 
-## Get strings from binary files:
+* Audacity
+  * Change mode to spectrogram
+    * Can show pictures
+* If we have modem sounds:
+  * [minimodem](https://github.com/kamalmostafa/minimodem)
+  * can try different baud
+
+### Get Metadata:
+
+exiftool for images pdfinfo for pdfs strings for text files
+
+### Get strings from binary files:
+
 strings
 
-nslookup: check open ports
-ps: processes
+nslookup: check open ports ps: processes
 
-When checking hex, check the begining and the end of the file. Can have some info about the file type.
-Files starting with BM are BMP files
+When checking hex, check the begining and the end of the file. Can have some info about the file type. Files starting with BM are BMP files
 
 check for corrupted images/ find out if there are hidden bytes:
 
@@ -91,66 +88,70 @@ check for corrupted images/ find out if there are hidden bytes:
 
 https://georgeom.net/StegOnline/upload
 
-Stegonline: extract bytes from colors
-Ex: extract red/green/blue bit 1 from an image
-bit 0 or 1 are the least noticeable
+Stegonline: extract bytes from colors Ex: extract red/green/blue bit 1 from an image bit 0 or 1 are the least noticeable
 
-## APNG files:
+### APNG files:
 
-- Disassemble and check delays
-- Disassemble and check individual frames
+* Disassemble and check delays
+* Disassemble and check individual frames
 
-To disassemble use apgndis_gui.exe
+To disassemble use apgndis\_gui.exe
 
-## If img looks like bad pixel art:
+### If img looks like bad pixel art:
+
 https://www.bertnase.de/npiet/npiet-execute.php
 
-## Extract data from executable:
+### Extract data from executable:
 
-https://github.com/woodruffw/steg86
-install version 0.1.2
+https://github.com/woodruffw/steg86 install version 0.1.2
 
 `cargo install steg86 --locked --version 0.1.2`
 
 `steg86 extract [FILE] > output`
 
-## PDF:
+### PDF:
 
-- peepdf
-  - object [object_id] to extract
-- Start with the ![Suspicious element](img/Sus_el.png), and continue with the ![numbers Shown](img/pdf_nums.png)
+* peepdf
+  * object \[object\_id] to extract
+* Start with the ![Suspicious element](../.gitbook/assets/Sus_el.png), and continue with the ![numbers Shown](../.gitbook/assets/pdf_nums.png)
 
-## Find code from physical key picture:
+### Find code from physical key picture:
 
 https://keysgen.com/?service=keyCode
 
-## QR Codes:
+### QR Codes:
+
 https://medium.com/@MrObvious/what-are-those-other-qr-codes-d4979c7448a
 
-- Different types of codes that look like qr codes:
-  - Aztec code
-    - Check the center of the code
-  - Data Matrix
-- Colored triangles is a High Capacity color Barcode ![hccb](img/High_Capacity_Color_Barcode_Tag.svg.png)
+* Different types of codes that look like qr codes:
+  * Aztec code
+    * Check the center of the code
+  * Data Matrix
+* Colored triangles is a High Capacity color Barcode ![hccb](../.gitbook/assets/High_Capacity_Color_Barcode_Tag.svg.png)
 
 https://merri.cx/qrazybox/
-- Magic qr code tool
-## Punchcards:
-- http://laighside.com/punchcard.htm
 
-## Scytale
+* Magic qr code tool
+
+### Punchcards:
+
+* http://laighside.com/punchcard.htm
+
+### Scytale
+
 https://legacy.cryptool.org/en/cto/scytale
 
-- Looks like rot cipher
-- Try different turns of band
-- try combining rot + scytale
-- Similar to rail fence but with straight lines instead of diagonal
+* Looks like rot cipher
+* Try different turns of band
+* try combining rot + scytale
+* Similar to rail fence but with straight lines instead of diagonal
 
-## Other
-- Music sheet : Velato
-- Bunch of squares: ![example](./img/dotsies.png)
-  - dotsies: https://www.cachesleuth.com/codes/dotsies.html
-- Ogham alphabet:
+### Other
 
-  ![ogham](img/picture11.png)
-- Moon script: ![alt text](img/picture12.png)
+* Music sheet : Velato
+* Bunch of squares: ![example](../.gitbook/assets/dotsies.png)
+  * dotsies: https://www.cachesleuth.com/codes/dotsies.html
+*   Ogham alphabet:
+
+    ![ogham](../.gitbook/assets/picture11.png)
+* Moon script: ![alt text](../.gitbook/assets/picture12.png)
