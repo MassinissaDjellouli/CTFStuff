@@ -128,29 +128,23 @@ If eval is used:
 
 ### Conditionals:
 
-* -a -> and
-* -gt -> greater than
-* -lt -> less than
-* -ge -> greater or equal
-* -le -> less or equal
-* -ne -> not equal
-* -eq -> compare numbers
-* \[ ] -> equivalent to test
-* -z -> empty string
-* -n -> not empty string
-* -e -> file exists
-* -f -> file exists and is a regular file
-* -d -> file exists and is a directory
-* -r -> file is readable
-* -w -> file is writable
-* -x -> file is executable
-* -o -> or
-* -a -> and
-* -gt -> greater than
-* -lt -> less than
-* -ge -> greater or equal
-* -le -> less or equal
-* -ne -> not equal
+- -eq -> compare numbers
+- [  ] -> equivalent to test
+- -z -> empty string
+- -n -> not empty string
+- -e -> file exists
+- -f -> file exists and is a regular file
+- -d -> file exists and is a directory
+- -r -> file is readable
+- -w -> file is writable
+- -x -> file is executable
+- -o -> or
+- -a -> and
+- -gt -> greater than
+- -lt -> less than
+- -ge -> greater or equal
+- -le -> less or equal
+- -ne -> not equal
 
 #### Unquoted expression injection
 
