@@ -163,3 +163,39 @@ https://www.jonaslieb.de/blog/arduino-ghidra-intro/
   - Makes it much easier to understand the code
   - Gives the function names 
   - wasm2wat will also give the function names in the wat format
+### How it works
+- Stack based virtual machine
+- Each function has its own local variables and parameters
+- The instructions operate on the values on the stack
+- get instructions will push a value to the stack, set instructions will pop a value from the stack and store it in a local variable or memory
+- load instructions will load a value from memory and push it to the stack, store instructions will pop a value from the stack and store it in memory
+- The memory is a linear array of bytes, the stack is also a linear array of values
+- The instructions act on the values on the stack, for example:
+  - i32.add will pop 2 values from the stack, add them and push the result to the stack
+- global variables are available to all functions and can be accessed using get_global and set_global instructions
+  - They are also available in js
+- 
+### Instructions
+- i[xx]_load[yy]_[s/u]
+  - xx = i32/i64/f32/f64
+  - yy = 8/16/32 
+  - loads a value of yy bits and sign extends it to xx bits
+  - s is for signed, u is for unsigned
+  - ex:
+    - i32_load16_s will load 16 bits from memory, sign extend it to 32 bits and push it to the stack
+- i[xx]_store[yy]
+  - xx = i32/i64/f32/f64
+  - yy = 8/16/32
+  - pops a value from the stack and stores it in memory as yy bits
+  - ex:
+  -   - i32_store16 will pop a value from the stack and store it in memory as 16 bits
+- i[xx]_[op]
+  - op = add/sub/mul/div/srem/urem/and/or/xor
+  - pops 2 values from the stack, performs the operation and pushes the result to the stack
+  - ex:
+    - i32_add will pop 2 values from the stack, add them and push the result to the stack
+- i[xx].const [value]
+  - pushes a constant value to the stack
+- import [module] [name] (func [wasm_name] (param [type1] [type2] ...) (result [type]))
+  - imports a function from js/the host environment
+  - the function can then be called from the wasm code

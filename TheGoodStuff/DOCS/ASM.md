@@ -72,3 +72,11 @@ strace: Useful to see the syscalls that a program does.
 
 - Shellcraft module from pwntools
 - Encoding module can be used to avoid specific bytes in the shellcode
+
+### Jumping inside the shellcode
+In x86_64:
+- The bytes EB XX are used as short jump instructions
+- It lets you jump to -128 and +127 bytes from the current instruction, depending on the XX
+  - Can be useful for JIT exploitation
+  - Can be useful as a stager for shellcode
+ 
