@@ -199,3 +199,31 @@ https://www.jonaslieb.de/blog/arduino-ghidra-intro/
 - import [module] [name] (func [wasm_name] (param [type1] [type2] ...) (result [type]))
   - imports a function from js/the host environment
   - the function can then be called from the wasm code
+
+## Patterns
+- AES:
+  - Lots of xor operations, operations on blocks of 16 (usually in blocks of 4x4 bytes):
+  - To figure out if it is encryption or decryption, we can try to find the SBox lookup table and figure out if it is the regular SBox or the inverse SBox.
+  - Sbox is a substitution box used in AES encryption. So in the decompiled code it might look like this:
+    ```c
+    //In each case, "some_memory_address" is the address of the SBox lookup table. It should contains a certain set of bytes.
+    bytes_to_encrypt[idx] = some_memory_address + bytes_to_encrypt[idx]
+    //or
+    for (int idx = 0; idx < 16; idx++) {
+      bytes_to_encrypt + idx = some_memory_address + bytes_to_encrypt + idx
+    }
+    //or
+    for (int idx = 0; idx < 4; idx++) {
+      int* x1 = bytes_to_encrypt + idx << 2
+      int* x2 = bytes_to_encrypt + (idx + 1) << 2
+      int* x3 = bytes_to_encrypt + (idx + 2) << 2
+      int* x4 = bytes_to_encrypt + (idx + 3) << 2
+
+      *x1 + idx << 2 = some_memory_address + *x1 + idx << 2
+      *x2 + idx << 2 = some_memory_address + *x2 + idx << 2
+      *x3 + idx << 2 = some_memory_address + *x3 + idx << 2
+      *x4 + idx << 2 = some_memory_address + *x4 + idx << 2
+    }  
+    ```
+    - Regular sbox lookup table starts with these bytes: `0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5`
+    - Inverse sbox lookup table starts with these bytes: `0x52, 0x09, 0x6a, 0xd5, 0x30, 0x36, 0xa5, 0x38`
