@@ -200,6 +200,10 @@ https://www.jonaslieb.de/blog/arduino-ghidra-intro/
   - imports a function from js/the host environment
   - the function can then be called from the wasm code
 
+## Radare2
+- rabin2 -I [binary]
+  - Shows important info about the binary, including the architecture and compiler used.
+
 ## Patterns
 - AES:
   - Lots of xor operations, operations on blocks of 16 (usually in blocks of 4x4 bytes):
