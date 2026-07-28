@@ -68,6 +68,14 @@ https://docs.oracle.com/cd/E26502_01/html/E28388/eoiyg.html
 
 strace: Useful to see the syscalls that a program does.
 
+## Calling conventions:
+- Linux:
+  - x86_64: rdi, rsi, rdx, rcx, r8, r9, stack for the rest
+  - aarch64: x0, x1, x2, x3, x4, x5, x6, x7, stack for the rest
+- Windows:
+  - x86_64: rcx, rdx, r8, r9, stack for the rest
+  - aarch64: x0, x1, x2, x3, x4, x5, x6, x7, stack for the rest
+
 ## Shellcoding
 
 - Shellcraft module from pwntools

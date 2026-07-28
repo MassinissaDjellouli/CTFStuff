@@ -7,7 +7,7 @@ from pwn import *
 context(log_level="debug")
 context.terminal = ["tmux", "split-window", "-h"]
 
-HOST, PORT = "chals.ctf.csaw.io", 21006
+HOST, PORT = "localhost", 1337
 
 {bindings}
 
@@ -25,12 +25,12 @@ gdbscript = gdb_script(
 
 
 @contextmanager
-def launch(local=True, debug=False, aslr=False, argv=None, envp=None):
+def launch(remote=False, debug=False, aslr=False, argv=None, envp=None):
     global target    
     target = None
 
     try:
-        if local:
+        if not remote:
             global {bin_name}
 
             context.binary = {bin_name}
