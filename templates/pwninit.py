@@ -11,6 +11,11 @@ HOST, PORT = "localhost", 1337
 
 {bindings}
 
+def b(addr):
+    addr += 0x400000
+    main = 0x40xxxx
+    off = addr - main
+    return "b * $main + " + str(off)
 
 def br(func, off=0):
     return f"b *"+ func + " + " + str(off)
@@ -19,18 +24,29 @@ def gdb_script(*args):
     return "\n".join(args) + "\n"
 
 gdbscript = gdb_script(
-    br("main"),
+    "ni 35",
+    br("__libc_start_main", 0x84),
+    "c",
+    "si",
+    "ni 23",
+    "si",
+    "set $main=(long)$rip",
+    "c"
 )
+
+# gdbscript = gdb_script(
+#    br("main"),
+#)
 
 
 
 @contextmanager
-def launch(remote=False, debug=False, aslr=False, argv=None, envp=None):
+def launch(is_remote=False, debug=False, aslr=False, argv=None, envp=None):
     global target    
     target = None
 
     try:
-        if not remote:
+        if not is_remote:
             global {bin_name}
 
             context.binary = {bin_name}

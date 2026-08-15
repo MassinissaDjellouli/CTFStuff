@@ -324,6 +324,20 @@ https://www.jonaslieb.de/blog/arduino-ghidra-intro/
       - 0x94d049bb133111eb -> -0x6b2f9e44ecceee15
   - It's a PRNG
   - Reversible
+- VMs:
+  - Struct with these fields:
+    - IP
+    - Memory pointer (or memory block)
+    - Pointer to the instructions
+  - Big memory allocation
+    - Usually for the VM memory
+    - Can be on the stack or on the heap using malloc
+    - If on the stack, we will see a big stack frame
+      - Something like `sub rsp, 0x1000` or `sub rsp, 0x2000` or even bigger
+  - The VM memory is usually a big array of bytes, so we will see a lot of `mov [reg+offset], reg` or `mov reg, [reg+offset]` instructions
+  - VM Dispatch:
+    - Either a big switch statement or a jump table
+    - From the Instruction pointer we decode it and use it as the switch case or the jump table index
 
 # Python RE Helper Functions (Shallout P.S.Y <3)
 > Mimicking C primitives for reverse engineering work
